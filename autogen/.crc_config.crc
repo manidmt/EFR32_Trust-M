@@ -1,0 +1,14 @@
+#CRC Codes for initially generated config files -- do not modify!
+dmadrv_config.h=1207334949
+emlib_core_debug_config.h=-212744839
+sl_board_control_config.h=185964020
+sl_clock_manager_oscillator_config.h=2127967509
+sl_clock_manager_tree_config.h=-1031150740
+sl_core_config.h=-119586893
+sl_debug_swo_config.h=-1563780709
+sl_device_init_dcdc_config.h=1955081430
+sl_device_init_emu_config.h=622680131
+sl_interrupt_manager_s2_config.h=1560337863
+sl_iostream_usart_vcom_config.h=-821558555
+sl_memory_config.h=-1757257759
+sl_memory_manager_region_config.h=1585140969
