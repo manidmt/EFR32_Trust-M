@@ -31,6 +31,8 @@ component:
 - {id: clock_manager}
 - {id: device_init}
 - {id: emlib_i2c}
+- instance: [sensor]
+  id: i2cspm
 - {id: iostream}
 - {id: iostream_retarget_stdio}
 - instance: [vcom]

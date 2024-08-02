@@ -16,6 +16,10 @@
 #ifndef _PAL_I2C_H_
 #define _PAL_I2C_H_
 
+
+#define OPTIGA_ADDR   0x30
+
+
 #ifdef __cplusplus
 extern "C" {
 #endif

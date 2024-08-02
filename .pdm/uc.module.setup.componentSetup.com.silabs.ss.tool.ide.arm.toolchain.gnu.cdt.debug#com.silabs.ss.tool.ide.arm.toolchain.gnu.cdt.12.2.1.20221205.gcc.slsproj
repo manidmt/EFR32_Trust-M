@@ -109,12 +109,17 @@
         <folder name="device_manager">
           <folder name="src">
             <file name="sl_device_clock.c" uri="studio:/sdk/platform/service/device_manager/src/sl_device_clock.c"/>
+            <file name="sl_device_peripheral.c" uri="studio:/sdk/platform/service/device_manager/src/sl_device_peripheral.c"/>
           </folder>
           <folder name="inc">
             <file name="sl_device_clock.h" uri="studio:/sdk/platform/service/device_manager/inc/sl_device_clock.h"/>
+            <file name="sl_device_peripheral.h" uri="studio:/sdk/platform/service/device_manager/inc/sl_device_peripheral.h"/>
           </folder>
           <folder name="clocks">
             <file name="sl_device_clock_efr32xg23.c" uri="studio:/sdk/platform/service/device_manager/clocks/sl_device_clock_efr32xg23.c"/>
+          </folder>
+          <folder name="devices">
+            <file name="sl_device_peripheral_hal_efr32xg23.c" uri="studio:/sdk/platform/service/device_manager/devices/sl_device_peripheral_hal_efr32xg23.c"/>
           </folder>
         </folder>
         <folder name="device_init">
@@ -171,6 +176,15 @@
             <file name="sl_system_process_action.h" uri="studio:/sdk/platform/service/system/inc/sl_system_process_action.h"/>
           </folder>
         </folder>
+        <folder name="udelay">
+          <folder name="src">
+            <file name="sl_udelay.c" uri="studio:/sdk/platform/service/udelay/src/sl_udelay.c"/>
+            <file name="sl_udelay_armv6m_gcc.S" uri="studio:/sdk/platform/service/udelay/src/sl_udelay_armv6m_gcc.S"/>
+          </folder>
+          <folder name="inc">
+            <file name="sl_udelay.h" uri="studio:/sdk/platform/service/udelay/inc/sl_udelay.h"/>
+          </folder>
+        </folder>
       </folder>
       <folder name="CMSIS">
         <folder name="Core">
@@ -191,6 +205,14 @@
           </folder>
           <folder name="inc">
             <file name="sl_debug_swo.h" uri="studio:/sdk/platform/driver/debug/inc/sl_debug_swo.h"/>
+          </folder>
+        </folder>
+        <folder name="i2cspm">
+          <folder name="src">
+            <file name="sl_i2cspm.c" uri="studio:/sdk/platform/driver/i2cspm/src/sl_i2cspm.c"/>
+          </folder>
+          <folder name="inc">
+            <file name="sl_i2cspm.h" uri="studio:/sdk/platform/driver/i2cspm/inc/sl_i2cspm.h"/>
           </folder>
         </folder>
       </folder>
@@ -291,12 +313,14 @@
   <includePath uri="studio:/sdk/platform/emdrv/dmadrv/inc/s2_signals"/>
   <includePath uri="studio:/sdk/platform/emdrv/common/inc"/>
   <includePath uri="studio:/sdk/platform/emlib/inc"/>
+  <includePath uri="studio:/sdk/platform/driver/i2cspm/inc"/>
   <includePath uri="studio:/sdk/platform/service/interrupt_manager/inc"/>
   <includePath uri="studio:/sdk/platform/service/interrupt_manager/inc/arm"/>
   <includePath uri="studio:/sdk/platform/service/iostream/inc"/>
   <includePath uri="studio:/sdk/platform/service/memory_manager/inc"/>
   <includePath uri="studio:/sdk/platform/common/toolchain/inc"/>
   <includePath uri="studio:/sdk/platform/service/system/inc"/>
+  <includePath uri="studio:/sdk/platform/service/udelay/inc"/>
   <macroDefinition name="DEBUG_EFM"/>
   <macroDefinition name="EFR32FG23B010F512IM48"/>
   <macroDefinition name="HARDWARE_BOARD_DEFAULT_RF_BAND_868"/>

@@ -17,6 +17,20 @@
 #include "em_i2c.h"
 #include "optiga_lib_config.h"
 #include "em_cmu.h" // For clock management
+#include "sl_i2cspm.h"
+
+
+/*
+ * Fot he correct communcation between EFR32 and Optiga Trus-M it shoudl be:
+ *
+ * pal_i2c_t config{
+ *  .hw_config = I2C,
+ *  .p_upper_layer_ctx = NULL,
+ *  .upper_layer_event_handler = NULL,
+ *  .slave_address = OPTIGA_ADDR
+ * }
+ *
+ */
 
 #define PAL_I2C_MASTER_MAX_BITRATE (400U)
 
@@ -85,16 +99,24 @@ pal_status_t pal_i2c_init(const pal_i2c_t *p_i2c_context) {
     }
 
     // Assuming p_i2c_hw_config points to a structure with I2C configuration details
-    const I2C_Init_TypeDef *i2cConfig = (I2C_Init_TypeDef *)(p_i2c_context->p_i2c_hw_config);
+    // const I2C_Init_TypeDef *i2cConfig = (I2C_Init_TypeDef *)(p_i2c_context->p_i2c_hw_config);
 
     // Enable clock for I2C
-    CMU_ClockEnable(cmuClock_I2C0, true); // Adjust as necessary for your specific I2C instance
+    // CMU_ClockEnable(cmuClock_I2C0, true);
 
     // Initialize I2C
-    I2C_Init(I2C0, i2cConfig); // Adjust I2C0 as necessary
+    I2CSPM_Init_TypeDef i2cInit = {
+        .port = I2C0,
+        .sclPort = gpioPortA,
+        .sdaPort = gpioPortA,
+        .sclPin = 8,
+        .sdaPin = 7,
+        .i2cRefFreq = 0,
+        .i2cMaxFreq = I2C_FREQ_STANDARD_MAX,
+        .i2cClhr = i2cClockHLRStandard
+      };
 
-    // Configure GPIO pins for I2C, if not already configured by I2C_Init
-    // This might involve setting the pins to their alternate function, open-drain, with pull-ups
+      I2CSPM_Init(&i2cInit);
 
     return PAL_STATUS_SUCCESS;
 }
@@ -105,9 +127,7 @@ pal_status_t pal_i2c_deinit(const pal_i2c_t *p_i2c_context) {
         return PAL_STATUS_FAILURE;
     }
 
-    // Assuming p_i2c_context->p_i2c_hw_config points to the I2C peripheral instance
-    // and CMU_ClockEnable and I2C_Reset are available functions for clock management and resetting the I2C peripheral.
-
+    /*
     // Disable I2C peripheral before resetting it
     I2C_Enable(p_i2c_context->p_i2c_hw_config, false);
 
@@ -117,6 +137,7 @@ pal_status_t pal_i2c_deinit(const pal_i2c_t *p_i2c_context) {
     // Disable clock for I2C to save power
     CMU_ClockEnable(cmuClock_I2C0, false); // Assuming cmuClock_I2C0 is the correct clock for the I2C instance
 
+    */
     return PAL_STATUS_SUCCESS;
 }
 
@@ -133,28 +154,18 @@ pal_status_t pal_i2c_write(const pal_i2c_t *p_i2c_context, uint8_t *p_data, uint
     seq.buf[0].data = p_data;
     seq.buf[0].len = length;
 
-    // Start I2C transfer
-    result = I2C_TransferInit(p_i2c_context->p_i2c_hw_config, &seq);
-
-    // Process the transfer result
-    while (result == i2cTransferInProgress) {
-        result = I2C_Transfer(p_i2c_context->p_i2c_hw_config);
-    }
-
-    if (result == i2cTransferDone) {
-        // Transfer completed successfully
-        return PAL_STATUS_SUCCESS;
-    } else {
-        // Transfer failed
+    result = I2CSPM_Transfer(p_i2c_context->p_i2c_hw_config, &seq);
+      if (result != i2cTransferDone) {
         return PAL_STATUS_FAILURE;
-    }
+      }
+    return PAL_STATUS_SUCCESS;
+
 }
 
 pal_status_t pal_i2c_read(const pal_i2c_t *p_i2c_context, uint8_t *p_data, uint16_t length) {
 
     I2C_TransferSeq_TypeDef seq;
     I2C_TransferReturn_TypeDef result;
-    pal_status_t status = PAL_STATUS_FAILURE;
 
     // Acquire the I2C bus before read/write
     if (PAL_STATUS_SUCCESS == pal_i2c_acquire(p_i2c_context)) {
@@ -167,6 +178,12 @@ pal_status_t pal_i2c_read(const pal_i2c_t *p_i2c_context, uint8_t *p_data, uint1
         seq.buf[0].data = p_data;
         seq.buf[0].len = length;
 
+        result = I2CSPM_Transfer(p_i2c_context->p_i2c_hw_config, &seq);
+              if (result == i2cTransferDone) {
+                return PAL_STATUS_SUCCESS;
+              }
+    }
+        /*
         // Start I2C transfer
         result = I2C_TransferInit(p_i2c_context->p_i2c_hw_config, &seq);
 
@@ -191,9 +208,9 @@ pal_status_t pal_i2c_read(const pal_i2c_t *p_i2c_context, uint8_t *p_data, uint1
         status = PAL_STATUS_I2C_BUSY;
         // Invoke upper layer event handler with busy status
         ((upper_layer_callback_t)(p_i2c_context->upper_layer_event_handler))(p_i2c_context->p_upper_layer_ctx, PAL_I2C_EVENT_BUSY);
-    }
+    }*/
 
-    return status;
+    return PAL_STATUS_FAILURE;
 }
 
 // Function to set the I2C bitrate

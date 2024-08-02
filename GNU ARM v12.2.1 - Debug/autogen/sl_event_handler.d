@@ -79,6 +79,10 @@ autogen/sl_event_handler.o: ../autogen/sl_event_handler.c \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\device_init\inc\sl_device_init_emu.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\hardware\board\inc\sl_board_control.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\driver\debug\inc\sl_debug_swo.h \
+ ../autogen/sl_i2cspm_instances.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\driver\i2cspm\inc\sl_i2cspm.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_gpio.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_i2c.h \
  ../autogen/sl_iostream_init_usart_instances.h \
  ../autogen/sl_component_catalog.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\iostream\inc\sl_iostream.h \
@@ -171,6 +175,10 @@ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\devi
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\device_init\inc\sl_device_init_emu.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\hardware\board\inc\sl_board_control.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\driver\debug\inc\sl_debug_swo.h:
+../autogen/sl_i2cspm_instances.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\driver\i2cspm\inc\sl_i2cspm.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_gpio.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_i2c.h:
 ../autogen/sl_iostream_init_usart_instances.h:
 ../autogen/sl_component_catalog.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\iostream\inc\sl_iostream.h:

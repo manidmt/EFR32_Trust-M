@@ -18,6 +18,21 @@
 /***************************************************************************//**
  * Initialize application.
  ******************************************************************************/
+#include <stdio.h>
+#include <time.h>
+int contador = 0;
+
+void my_sleep(unsigned duration)
+{
+    time_t start = time(NULL);
+    double end = duration;
+    time_t now;
+    do {
+        now = time(NULL);
+    } while (difftime(now, start) < end);
+}
+
+
 void app_init(void)
 {
 }
@@ -27,4 +42,8 @@ void app_init(void)
  ******************************************************************************/
 void app_process_action(void)
 {
+  if (contador%2==0)    printf("\na");
+  else                  printf("\nb");
+  //my_sleep(500);
+  contador++;
 }
