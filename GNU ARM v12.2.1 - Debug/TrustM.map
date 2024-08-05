@@ -763,28 +763,28 @@ Discarded input sections
  .text.i2c_master_arbitration_lost_callback
                 0x00000000        0x4 ./Pal/pal_i2c.o
  .text.pal_i2c_init
-                0x00000000       0x2c ./Pal/pal_i2c.o
+                0x00000000       0x20 ./Pal/pal_i2c.o
  .text.pal_i2c_deinit
-                0x00000000       0x10 ./Pal/pal_i2c.o
+                0x00000000        0x4 ./Pal/pal_i2c.o
  .text.pal_i2c_write
-                0x00000000       0x2a ./Pal/pal_i2c.o
+                0x00000000       0x28 ./Pal/pal_i2c.o
  .text.pal_i2c_read
-                0x00000000       0x50 ./Pal/pal_i2c.o
+                0x00000000       0x5c ./Pal/pal_i2c.o
  .text.pal_i2c_set_bitrate
                 0x00000000       0x7c ./Pal/pal_i2c.o
  .bss.gp_pal_i2c_current_ctx
                 0x00000000        0x4 ./Pal/pal_i2c.o
  .bss.g_entry_count
                 0x00000000        0x4 ./Pal/pal_i2c.o
- .rodata        0x00000000       0x24 ./Pal/pal_i2c.o
- .debug_info    0x00000000      0xf7f ./Pal/pal_i2c.o
- .debug_abbrev  0x00000000      0x3a7 ./Pal/pal_i2c.o
- .debug_loc     0x00000000      0x5a7 ./Pal/pal_i2c.o
+ .rodata        0x00000000       0x34 ./Pal/pal_i2c.o
+ .debug_info    0x00000000      0xfe8 ./Pal/pal_i2c.o
+ .debug_abbrev  0x00000000      0x40f ./Pal/pal_i2c.o
+ .debug_loc     0x00000000      0x53b ./Pal/pal_i2c.o
  .debug_aranges
                 0x00000000       0x70 ./Pal/pal_i2c.o
  .debug_ranges  0x00000000       0xa0 ./Pal/pal_i2c.o
- .debug_line    0x00000000      0x585 ./Pal/pal_i2c.o
- .debug_str     0x00000000      0xe4f ./Pal/pal_i2c.o
+ .debug_line    0x00000000      0x54f ./Pal/pal_i2c.o
+ .debug_str     0x00000000      0xe63 ./Pal/pal_i2c.o
  .comment       0x00000000       0x46 ./Pal/pal_i2c.o
  .debug_frame   0x00000000      0x10c ./Pal/pal_i2c.o
  .ARM.attributes
@@ -5345,46 +5345,46 @@ LOAD linker stubs
  .debug_line_str
                 0x00000000       0xe7 c:/siliconlabs/simplicitystudio/v5/developer/toolchains/gnu_arm/12.2.rel1_2023.7/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v8-m.main+fp/hard/crt0.o
 
-.debug_info     0x00000000    0x35cae
- .debug_info    0x00000000      0x210 ./app.o
- .debug_info    0x00000210       0xa1 ./main.o
- .debug_info    0x000002b1       0x86 ./autogen/sl_board_default_init.o
- .debug_info    0x00000337     0x16bb ./autogen/sl_event_handler.o
- .debug_info    0x000019f2      0x717 ./autogen/sl_i2cspm_init.o
- .debug_info    0x00002109     0x186d ./autogen/sl_iostream_init_usart_instances.o
- .debug_info    0x00003976      0x3c5 ./simplicity_sdk_2024.6.0/hardware/board/src/sl_board_control_gpio.o
- .debug_info    0x00003d3b      0x13f ./simplicity_sdk_2024.6.0/hardware/board/src/sl_board_init.o
- .debug_info    0x00003e7a      0x4d5 ./simplicity_sdk_2024.6.0/hardware/driver/configuration_over_swo/src/sl_cos.o
- .debug_info    0x0000434f      0x3a9 ./simplicity_sdk_2024.6.0/platform/Device/SiliconLabs/EFR32FG23/Source/startup_efr32fg23.o
- .debug_info    0x000046f8     0x2358 ./simplicity_sdk_2024.6.0/platform/Device/SiliconLabs/EFR32FG23/Source/system_efr32fg23.o
- .debug_info    0x00006a50       0x86 ./simplicity_sdk_2024.6.0/platform/common/src/sl_assert.o
- .debug_info    0x00006ad6      0x91a ./simplicity_sdk_2024.6.0/platform/common/src/sl_core_cortexm.o
- .debug_info    0x000073f0     0x274c ./simplicity_sdk_2024.6.0/platform/driver/debug/src/sl_debug_swo.o
- .debug_info    0x00009b3c     0x2332 ./simplicity_sdk_2024.6.0/platform/driver/i2cspm/src/sl_i2cspm.o
- .debug_info    0x0000be6e     0x1ec9 ./simplicity_sdk_2024.6.0/platform/emdrv/dmadrv/src/dmadrv.o
- .debug_info    0x0000dd37     0xa9ac ./simplicity_sdk_2024.6.0/platform/emlib/src/em_cmu.o
- .debug_info    0x000186e3     0x534b ./simplicity_sdk_2024.6.0/platform/emlib/src/em_emu.o
- .debug_info    0x0001da2e     0x29b0 ./simplicity_sdk_2024.6.0/platform/emlib/src/em_gpio.o
- .debug_info    0x000203de     0x145e ./simplicity_sdk_2024.6.0/platform/emlib/src/em_i2c.o
- .debug_info    0x0002183c     0x1aeb ./simplicity_sdk_2024.6.0/platform/emlib/src/em_ldma.o
- .debug_info    0x00023327     0x4c93 ./simplicity_sdk_2024.6.0/platform/emlib/src/em_usart.o
- .debug_info    0x00027fba      0xb2e ./simplicity_sdk_2024.6.0/platform/service/clock_manager/src/sl_clock_manager.o
- .debug_info    0x00028ae8     0x27b7 ./simplicity_sdk_2024.6.0/platform/service/clock_manager/src/sl_clock_manager_hal_s2.o
- .debug_info    0x0002b29f       0xc9 ./simplicity_sdk_2024.6.0/platform/service/clock_manager/src/sl_clock_manager_init.o
- .debug_info    0x0002b368     0x1e3e ./simplicity_sdk_2024.6.0/platform/service/clock_manager/src/sl_clock_manager_init_hal_s2.o
- .debug_info    0x0002d1a6      0x370 ./simplicity_sdk_2024.6.0/platform/service/device_init/src/sl_device_init_dcdc_s2.o
- .debug_info    0x0002d516      0xb48 ./simplicity_sdk_2024.6.0/platform/service/device_init/src/sl_device_init_emu_s2.o
- .debug_info    0x0002e05e      0x77c ./simplicity_sdk_2024.6.0/platform/service/device_manager/clocks/sl_device_clock_efr32xg23.o
- .debug_info    0x0002e7da      0xeee ./simplicity_sdk_2024.6.0/platform/service/interrupt_manager/src/sl_interrupt_manager_cortexm.o
- .debug_info    0x0002f6c8      0x656 ./simplicity_sdk_2024.6.0/platform/service/iostream/src/sl_iostream.o
- .debug_info    0x0002fd1e      0x692 ./simplicity_sdk_2024.6.0/platform/service/iostream/src/sl_iostream_retarget_stdio.o
- .debug_info    0x000303b0     0x1ba5 ./simplicity_sdk_2024.6.0/platform/service/iostream/src/sl_iostream_uart.o
- .debug_info    0x00031f55     0x386b ./simplicity_sdk_2024.6.0/platform/service/iostream/src/sl_iostream_usart.o
- .debug_info    0x000357c0      0x1e8 ./simplicity_sdk_2024.6.0/platform/service/memory_manager/src/sl_memory_manager_region.o
- .debug_info    0x000359a8       0xa7 ./simplicity_sdk_2024.6.0/platform/service/system/src/sl_system_init.o
- .debug_info    0x00035a4f       0x93 ./simplicity_sdk_2024.6.0/platform/service/system/src/sl_system_process_action.o
- .debug_info    0x00035ae2      0x1a6 ./simplicity_sdk_2024.6.0/platform/service/udelay/src/sl_udelay.o
- .debug_info    0x00035c88       0x26 ./simplicity_sdk_2024.6.0/platform/service/udelay/src/sl_udelay_armv6m_gcc.o
+.debug_info     0x00000000    0x35cb5
+ .debug_info    0x00000000      0x217 ./app.o
+ .debug_info    0x00000217       0xa1 ./main.o
+ .debug_info    0x000002b8       0x86 ./autogen/sl_board_default_init.o
+ .debug_info    0x0000033e     0x16bb ./autogen/sl_event_handler.o
+ .debug_info    0x000019f9      0x717 ./autogen/sl_i2cspm_init.o
+ .debug_info    0x00002110     0x186d ./autogen/sl_iostream_init_usart_instances.o
+ .debug_info    0x0000397d      0x3c5 ./simplicity_sdk_2024.6.0/hardware/board/src/sl_board_control_gpio.o
+ .debug_info    0x00003d42      0x13f ./simplicity_sdk_2024.6.0/hardware/board/src/sl_board_init.o
+ .debug_info    0x00003e81      0x4d5 ./simplicity_sdk_2024.6.0/hardware/driver/configuration_over_swo/src/sl_cos.o
+ .debug_info    0x00004356      0x3a9 ./simplicity_sdk_2024.6.0/platform/Device/SiliconLabs/EFR32FG23/Source/startup_efr32fg23.o
+ .debug_info    0x000046ff     0x2358 ./simplicity_sdk_2024.6.0/platform/Device/SiliconLabs/EFR32FG23/Source/system_efr32fg23.o
+ .debug_info    0x00006a57       0x86 ./simplicity_sdk_2024.6.0/platform/common/src/sl_assert.o
+ .debug_info    0x00006add      0x91a ./simplicity_sdk_2024.6.0/platform/common/src/sl_core_cortexm.o
+ .debug_info    0x000073f7     0x274c ./simplicity_sdk_2024.6.0/platform/driver/debug/src/sl_debug_swo.o
+ .debug_info    0x00009b43     0x2332 ./simplicity_sdk_2024.6.0/platform/driver/i2cspm/src/sl_i2cspm.o
+ .debug_info    0x0000be75     0x1ec9 ./simplicity_sdk_2024.6.0/platform/emdrv/dmadrv/src/dmadrv.o
+ .debug_info    0x0000dd3e     0xa9ac ./simplicity_sdk_2024.6.0/platform/emlib/src/em_cmu.o
+ .debug_info    0x000186ea     0x534b ./simplicity_sdk_2024.6.0/platform/emlib/src/em_emu.o
+ .debug_info    0x0001da35     0x29b0 ./simplicity_sdk_2024.6.0/platform/emlib/src/em_gpio.o
+ .debug_info    0x000203e5     0x145e ./simplicity_sdk_2024.6.0/platform/emlib/src/em_i2c.o
+ .debug_info    0x00021843     0x1aeb ./simplicity_sdk_2024.6.0/platform/emlib/src/em_ldma.o
+ .debug_info    0x0002332e     0x4c93 ./simplicity_sdk_2024.6.0/platform/emlib/src/em_usart.o
+ .debug_info    0x00027fc1      0xb2e ./simplicity_sdk_2024.6.0/platform/service/clock_manager/src/sl_clock_manager.o
+ .debug_info    0x00028aef     0x27b7 ./simplicity_sdk_2024.6.0/platform/service/clock_manager/src/sl_clock_manager_hal_s2.o
+ .debug_info    0x0002b2a6       0xc9 ./simplicity_sdk_2024.6.0/platform/service/clock_manager/src/sl_clock_manager_init.o
+ .debug_info    0x0002b36f     0x1e3e ./simplicity_sdk_2024.6.0/platform/service/clock_manager/src/sl_clock_manager_init_hal_s2.o
+ .debug_info    0x0002d1ad      0x370 ./simplicity_sdk_2024.6.0/platform/service/device_init/src/sl_device_init_dcdc_s2.o
+ .debug_info    0x0002d51d      0xb48 ./simplicity_sdk_2024.6.0/platform/service/device_init/src/sl_device_init_emu_s2.o
+ .debug_info    0x0002e065      0x77c ./simplicity_sdk_2024.6.0/platform/service/device_manager/clocks/sl_device_clock_efr32xg23.o
+ .debug_info    0x0002e7e1      0xeee ./simplicity_sdk_2024.6.0/platform/service/interrupt_manager/src/sl_interrupt_manager_cortexm.o
+ .debug_info    0x0002f6cf      0x656 ./simplicity_sdk_2024.6.0/platform/service/iostream/src/sl_iostream.o
+ .debug_info    0x0002fd25      0x692 ./simplicity_sdk_2024.6.0/platform/service/iostream/src/sl_iostream_retarget_stdio.o
+ .debug_info    0x000303b7     0x1ba5 ./simplicity_sdk_2024.6.0/platform/service/iostream/src/sl_iostream_uart.o
+ .debug_info    0x00031f5c     0x386b ./simplicity_sdk_2024.6.0/platform/service/iostream/src/sl_iostream_usart.o
+ .debug_info    0x000357c7      0x1e8 ./simplicity_sdk_2024.6.0/platform/service/memory_manager/src/sl_memory_manager_region.o
+ .debug_info    0x000359af       0xa7 ./simplicity_sdk_2024.6.0/platform/service/system/src/sl_system_init.o
+ .debug_info    0x00035a56       0x93 ./simplicity_sdk_2024.6.0/platform/service/system/src/sl_system_process_action.o
+ .debug_info    0x00035ae9      0x1a6 ./simplicity_sdk_2024.6.0/platform/service/udelay/src/sl_udelay.o
+ .debug_info    0x00035c8f       0x26 ./simplicity_sdk_2024.6.0/platform/service/udelay/src/sl_udelay_armv6m_gcc.o
 
 .debug_abbrev   0x00000000     0x55b8
  .debug_abbrev  0x00000000      0x125 ./app.o
@@ -5625,41 +5625,41 @@ LOAD linker stubs
  .debug_line    0x0001025b       0xa0 ./simplicity_sdk_2024.6.0/platform/service/udelay/src/sl_udelay_armv6m_gcc.o
 
 .debug_str      0x00000000     0xe189
- .debug_str     0x00000000      0x1f5 ./app.o
-                                0x263 (size before relaxing)
- .debug_str     0x000001f5       0x37 ./main.o
+ .debug_str     0x00000000      0x1fb ./app.o
+                                0x269 (size before relaxing)
+ .debug_str     0x000001fb       0x37 ./main.o
                                 0x18c (size before relaxing)
- .debug_str     0x0000022c       0x39 ./autogen/sl_board_default_init.o
+ .debug_str     0x00000232       0x39 ./autogen/sl_board_default_init.o
                                 0x1f6 (size before relaxing)
- .debug_str     0x00000265      0xd76 ./autogen/sl_event_handler.o
+ .debug_str     0x0000026b      0xd76 ./autogen/sl_event_handler.o
                                0x101a (size before relaxing)
- .debug_str     0x00000fdb      0x33b ./autogen/sl_i2cspm_init.o
+ .debug_str     0x00000fe1      0x33b ./autogen/sl_i2cspm_init.o
                                 0x66d (size before relaxing)
- .debug_str     0x00001316     0x187f ./autogen/sl_iostream_init_usart_instances.o
+ .debug_str     0x0000131c     0x187f ./autogen/sl_iostream_init_usart_instances.o
                                0x1d87 (size before relaxing)
- .debug_str     0x00002b95      0x2ba ./simplicity_sdk_2024.6.0/hardware/board/src/sl_board_control_gpio.o
+ .debug_str     0x00002b9b      0x2ba ./simplicity_sdk_2024.6.0/hardware/board/src/sl_board_control_gpio.o
                                 0x4de (size before relaxing)
- .debug_str     0x00002e4f       0x5e ./simplicity_sdk_2024.6.0/hardware/board/src/sl_board_init.o
+ .debug_str     0x00002e55       0x5e ./simplicity_sdk_2024.6.0/hardware/board/src/sl_board_init.o
                                 0x2ca (size before relaxing)
- .debug_str     0x00002ead      0x1bc ./simplicity_sdk_2024.6.0/hardware/driver/configuration_over_swo/src/sl_cos.o
+ .debug_str     0x00002eb3      0x1bc ./simplicity_sdk_2024.6.0/hardware/driver/configuration_over_swo/src/sl_cos.o
                                 0x424 (size before relaxing)
- .debug_str     0x00003069      0x1cc ./simplicity_sdk_2024.6.0/platform/Device/SiliconLabs/EFR32FG23/Source/startup_efr32fg23.o
+ .debug_str     0x0000306f      0x1cc ./simplicity_sdk_2024.6.0/platform/Device/SiliconLabs/EFR32FG23/Source/startup_efr32fg23.o
                                 0x3a9 (size before relaxing)
- .debug_str     0x00003235      0x6bb ./simplicity_sdk_2024.6.0/platform/Device/SiliconLabs/EFR32FG23/Source/system_efr32fg23.o
+ .debug_str     0x0000323b      0x6bb ./simplicity_sdk_2024.6.0/platform/Device/SiliconLabs/EFR32FG23/Source/system_efr32fg23.o
                                0x181e (size before relaxing)
- .debug_str     0x000038f0       0x65 ./simplicity_sdk_2024.6.0/platform/common/src/sl_assert.o
+ .debug_str     0x000038f6       0x65 ./simplicity_sdk_2024.6.0/platform/common/src/sl_assert.o
                                 0x1ad (size before relaxing)
- .debug_str     0x00003955      0x24b ./simplicity_sdk_2024.6.0/platform/common/src/sl_core_cortexm.o
+ .debug_str     0x0000395b      0x24b ./simplicity_sdk_2024.6.0/platform/common/src/sl_core_cortexm.o
                                 0x552 (size before relaxing)
- .debug_str     0x00003ba0     0x155f ./simplicity_sdk_2024.6.0/platform/driver/debug/src/sl_debug_swo.o
+ .debug_str     0x00003ba6     0x155f ./simplicity_sdk_2024.6.0/platform/driver/debug/src/sl_debug_swo.o
                                0x1c38 (size before relaxing)
- .debug_str     0x000050ff      0x204 ./simplicity_sdk_2024.6.0/platform/driver/i2cspm/src/sl_i2cspm.o
+ .debug_str     0x00005105      0x204 ./simplicity_sdk_2024.6.0/platform/driver/i2cspm/src/sl_i2cspm.o
                                0x19c1 (size before relaxing)
- .debug_str     0x00005303      0xcf9 ./simplicity_sdk_2024.6.0/platform/emdrv/dmadrv/src/dmadrv.o
+ .debug_str     0x00005309      0xcf9 ./simplicity_sdk_2024.6.0/platform/emdrv/dmadrv/src/dmadrv.o
                                0x10db (size before relaxing)
- .debug_str     0x00005ffc     0x433b ./simplicity_sdk_2024.6.0/platform/emlib/src/em_cmu.o
+ .debug_str     0x00006002     0x433b ./simplicity_sdk_2024.6.0/platform/emlib/src/em_cmu.o
                                0x673f (size before relaxing)
- .debug_str     0x0000a337      0xc11 ./simplicity_sdk_2024.6.0/platform/emlib/src/em_emu.o
+ .debug_str     0x0000a33d      0xc0b ./simplicity_sdk_2024.6.0/platform/emlib/src/em_emu.o
                                0x30e5 (size before relaxing)
  .debug_str     0x0000af48      0x109 ./simplicity_sdk_2024.6.0/platform/emlib/src/em_gpio.o
                                0x1931 (size before relaxing)

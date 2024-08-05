@@ -23,8 +23,8 @@
 /*
  * Fot he correct communcation between EFR32 and Optiga Trus-M it shoudl be:
  *
- * pal_i2c_t config{
- *  .hw_config = I2C,
+ * pal_i2c_t config = {
+ *  .p_i2c_hw_config = I2C0,
  *  .p_upper_layer_ctx = NULL,
  *  .upper_layer_event_handler = NULL,
  *  .slave_address = OPTIGA_ADDR
@@ -93,13 +93,13 @@ void i2c_master_arbitration_lost_callback(void) {
 }
 
 pal_status_t pal_i2c_init(const pal_i2c_t *p_i2c_context) {
-    
-    if (p_i2c_context == NULL || p_i2c_context->p_i2c_hw_config == NULL) {
-        return PAL_STATUS_FAILURE;
-    }
 
-    // Assuming p_i2c_hw_config points to a structure with I2C configuration details
-    // const I2C_Init_TypeDef *i2cConfig = (I2C_Init_TypeDef *)(p_i2c_context->p_i2c_hw_config);
+    #ifdef EFR32
+    #else
+    if (p_i2c_context == NULL || p_i2c_context->p_i2c_hw_config == NULL) {
+            return PAL_STATUS_FAILURE;
+        }
+    #endif
 
     // Enable clock for I2C
     // CMU_ClockEnable(cmuClock_I2C0, true);
@@ -123,9 +123,14 @@ pal_status_t pal_i2c_init(const pal_i2c_t *p_i2c_context) {
 
 pal_status_t pal_i2c_deinit(const pal_i2c_t *p_i2c_context) {
 
+    #ifdef EFR32
+    return PAL_STATUS_SUCCESS;
+    #else
     if (p_i2c_context == NULL || p_i2c_context->p_i2c_hw_config == NULL) {
-        return PAL_STATUS_FAILURE;
-    }
+            return PAL_STATUS_FAILURE;
+        }
+    return PAL_STATUS_SUCCESS;
+    #endif
 
     /*
     // Disable I2C peripheral before resetting it
@@ -138,7 +143,6 @@ pal_status_t pal_i2c_deinit(const pal_i2c_t *p_i2c_context) {
     CMU_ClockEnable(cmuClock_I2C0, false); // Assuming cmuClock_I2C0 is the correct clock for the I2C instance
 
     */
-    return PAL_STATUS_SUCCESS;
 }
 
 
@@ -147,14 +151,32 @@ pal_status_t pal_i2c_write(const pal_i2c_t *p_i2c_context, uint8_t *p_data, uint
     I2C_TransferSeq_TypeDef seq;
     I2C_TransferReturn_TypeDef result;
 
+    pal_i2c_t *config;
+
+    #ifdef EFR32
+    pal_i2c_t local_config = {
+      .p_i2c_hw_config = I2C0,
+      .p_upper_layer_ctx = NULL,
+      .upper_layer_event_handler = NULL,
+      .slave_address = OPTIGA_ADDR
+    };
+
+    config = &local_config;
+    #else
+    config = p_i2c_context;
+    #endif
+
+    if (config == NULL) {
+        return PAL_STATUS_FAILURE;
+    }
     // Initialize I2C transfer sequence
-    seq.addr = p_i2c_context->slave_address << 1; // Shift the address for write operation
+    seq.addr = config->slave_address << 1; // Shift the address for write operation
     seq.flags = I2C_FLAG_WRITE; // Indicate a write operation
     // Setup the buffer for the sequence
     seq.buf[0].data = p_data;
     seq.buf[0].len = length;
 
-    result = I2CSPM_Transfer(p_i2c_context->p_i2c_hw_config, &seq);
+    result = I2CSPM_Transfer(config->p_i2c_hw_config, &seq);
       if (result != i2cTransferDone) {
         return PAL_STATUS_FAILURE;
       }
@@ -167,23 +189,45 @@ pal_status_t pal_i2c_read(const pal_i2c_t *p_i2c_context, uint8_t *p_data, uint1
     I2C_TransferSeq_TypeDef seq;
     I2C_TransferReturn_TypeDef result;
 
+    const pal_i2c_t *config;
+
+    #ifdef EFR32
+    pal_i2c_t local_config = {
+        .p_i2c_hw_config = I2C0,
+        .p_upper_layer_ctx = NULL,
+        .upper_layer_event_handler = NULL,
+        .slave_address = OPTIGA_ADDR
+    };
+    config = &local_config;
+    #else
+    config = p_i2c_context;
+    #endif
+
+    if (config == NULL) {
+        return PAL_STATUS_FAILURE;
+    }
+
     // Acquire the I2C bus before read/write
-    if (PAL_STATUS_SUCCESS == pal_i2c_acquire(p_i2c_context)) {
-        gp_pal_i2c_current_ctx = p_i2c_context;
+    if (PAL_STATUS_SUCCESS == pal_i2c_acquire(config)) {
+        gp_pal_i2c_current_ctx = config;
 
         // Setup I2C transfer for reading
-        seq.addr = (p_i2c_context->slave_address << 1) | 1; // Shift the address and set read bit
+        seq.addr = (config->slave_address << 1) | 1; // Shift the address and set read bit
         seq.flags = I2C_FLAG_READ; // Indicate a read operation
         // Setup the buffer for the sequence
         seq.buf[0].data = p_data;
         seq.buf[0].len = length;
 
-        result = I2CSPM_Transfer(p_i2c_context->p_i2c_hw_config, &seq);
-              if (result == i2cTransferDone) {
-                return PAL_STATUS_SUCCESS;
-              }
+        result = I2CSPM_Transfer(config->p_i2c_hw_config, &seq);
+        if (result == i2cTransferDone) {
+            return PAL_STATUS_SUCCESS;
+        }
     }
-        /*
+
+    return PAL_STATUS_FAILURE;
+
+
+    /*
         // Start I2C transfer
         result = I2C_TransferInit(p_i2c_context->p_i2c_hw_config, &seq);
 
@@ -209,8 +253,6 @@ pal_status_t pal_i2c_read(const pal_i2c_t *p_i2c_context, uint8_t *p_data, uint1
         // Invoke upper layer event handler with busy status
         ((upper_layer_callback_t)(p_i2c_context->upper_layer_event_handler))(p_i2c_context->p_upper_layer_ctx, PAL_I2C_EVENT_BUSY);
     }*/
-
-    return PAL_STATUS_FAILURE;
 }
 
 // Function to set the I2C bitrate

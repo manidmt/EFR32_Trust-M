@@ -19,6 +19,8 @@
 
 #define OPTIGA_ADDR   0x30
 
+#define EFR32
+
 
 #ifdef __cplusplus
 extern "C" {

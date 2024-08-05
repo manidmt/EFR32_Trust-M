@@ -20,6 +20,7 @@
  ******************************************************************************/
 #include <stdio.h>
 #include <time.h>
+#include "../Pal/pal_i2c.h"
 int contador = 0;
 
 void my_sleep(unsigned duration)
@@ -35,6 +36,13 @@ void my_sleep(unsigned duration)
 
 void app_init(void)
 {
+  /*
+  pal_i2c_t config = {
+    .p_i2c_hw_config = I2C0,
+    .p_upper_layer_ctx = NULL,
+    .upper_layer_event_handler = NULL,
+    .slave_address = OPTIGA_ADDR
+  };*/
 }
 
 /***************************************************************************//**
