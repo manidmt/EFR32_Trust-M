@@ -46,17 +46,20 @@ extern void example_performance_measurement(uint32_t *time_value, uint8_t time_r
 #define READ_PERFORMANCE_MEASUREMENT(time_taken) \
     example_performance_measurement(&time_taken, STOPTIMER_AND_CALCULATE)
 
-// Check return status
 #define WAIT_AND_CHECK_STATUS(return_status, optiga_lib_status) \
     if (OPTIGA_LIB_SUCCESS != return_status) { \
+        printf("Error: Return status not success\n"); \
         break; \
     } \
     while (OPTIGA_LIB_BUSY == optiga_lib_status) { \
+       /* printf("Waiting: OPTIGA_LIB_BUSY\n");*/ \
     } \
     if (OPTIGA_LIB_SUCCESS != optiga_lib_status) { \
+        printf("Error: OPTIGA library status not success\n"); \
         return_status = optiga_lib_status; \
         break; \
     }
+
 
 #if defined(OPTIGA_LIB_ENABLE_EXAMPLE_LOGGING)
 /**

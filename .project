@@ -81,6 +81,11 @@
 			<locationURI>STUDIO_SDK_LOC/platform/common/inc/sl_enum.h</locationURI>
 		</link>
 		<link>
+			<name>simplicity_sdk_2024.6.0/platform/common/inc/sl_slist.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/common/inc/sl_slist.h</locationURI>
+		</link>
+		<link>
 			<name>simplicity_sdk_2024.6.0/platform/common/inc/sl_status.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/common/inc/sl_status.h</locationURI>
@@ -106,6 +111,11 @@
 			<locationURI>STUDIO_SDK_LOC/platform/common/src/sl_core_cortexm.c</locationURI>
 		</link>
 		<link>
+			<name>simplicity_sdk_2024.6.0/platform/common/src/sl_slist.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/common/src/sl_slist.c</locationURI>
+		</link>
+		<link>
 			<name>simplicity_sdk_2024.6.0/platform/common/src/sl_string.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/common/src/sl_string.c</locationURI>
@@ -119,6 +129,11 @@
 			<name>simplicity_sdk_2024.6.0/platform/emlib/inc/em_assert.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_assert.h</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2024.6.0/platform/emlib/inc/em_burtc.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_burtc.h</locationURI>
 		</link>
 		<link>
 			<name>simplicity_sdk_2024.6.0/platform/emlib/inc/em_bus.h</name>
@@ -186,6 +201,11 @@
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_msc_compat.h</locationURI>
 		</link>
 		<link>
+			<name>simplicity_sdk_2024.6.0/platform/emlib/inc/em_prs.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_prs.h</locationURI>
+		</link>
+		<link>
 			<name>simplicity_sdk_2024.6.0/platform/emlib/inc/em_ramfunc.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_ramfunc.h</locationURI>
@@ -206,6 +226,11 @@
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_system_generic.h</locationURI>
 		</link>
 		<link>
+			<name>simplicity_sdk_2024.6.0/platform/emlib/inc/em_timer.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_timer.h</locationURI>
+		</link>
+		<link>
 			<name>simplicity_sdk_2024.6.0/platform/emlib/inc/em_usart.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_usart.h</locationURI>
@@ -219,6 +244,11 @@
 			<name>simplicity_sdk_2024.6.0/platform/emlib/inc/sli_em_cmu.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/sli_em_cmu.h</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2024.6.0/platform/emlib/src/em_burtc.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_burtc.c</locationURI>
 		</link>
 		<link>
 			<name>simplicity_sdk_2024.6.0/platform/emlib/src/em_cmu.c</name>
@@ -256,14 +286,49 @@
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_msc.c</locationURI>
 		</link>
 		<link>
+			<name>simplicity_sdk_2024.6.0/platform/emlib/src/em_prs.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_prs.c</locationURI>
+		</link>
+		<link>
 			<name>simplicity_sdk_2024.6.0/platform/emlib/src/em_system.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_system.c</locationURI>
 		</link>
 		<link>
+			<name>simplicity_sdk_2024.6.0/platform/emlib/src/em_timer.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_timer.c</locationURI>
+		</link>
+		<link>
 			<name>simplicity_sdk_2024.6.0/platform/emlib/src/em_usart.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_usart.c</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2024.6.0/platform/peripheral/inc/sl_hal_sysrtc.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/peripheral/inc/sl_hal_sysrtc.h</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2024.6.0/platform/peripheral/inc/sl_hal_sysrtc_compat.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/peripheral/inc/sl_hal_sysrtc_compat.h</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2024.6.0/platform/peripheral/src/sl_hal_sysrtc.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/peripheral/src/sl_hal_sysrtc.c</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2024.6.0/app/common/util/app_timer/app_timer.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/app/common/util/app_timer/app_timer.h</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2024.6.0/app/common/util/app_timer/sl_simple_timer.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/app/common/util/app_timer/sl_simple_timer.h</locationURI>
 		</link>
 		<link>
 			<name>simplicity_sdk_2024.6.0/hardware/driver/configuration_over_swo/inc/sl_cos.h</name>
@@ -406,19 +471,9 @@
 			<locationURI>STUDIO_SDK_LOC/platform/service/device_init/inc/sl_device_init_dcdc.h</locationURI>
 		</link>
 		<link>
-			<name>simplicity_sdk_2024.6.0/platform/service/device_init/inc/sl_device_init_emu.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/platform/service/device_init/inc/sl_device_init_emu.h</locationURI>
-		</link>
-		<link>
 			<name>simplicity_sdk_2024.6.0/platform/service/device_init/src/sl_device_init_dcdc_s2.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/service/device_init/src/sl_device_init_dcdc_s2.c</locationURI>
-		</link>
-		<link>
-			<name>simplicity_sdk_2024.6.0/platform/service/device_init/src/sl_device_init_emu_s2.c</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/platform/service/device_init/src/sl_device_init_emu_s2.c</locationURI>
 		</link>
 		<link>
 			<name>simplicity_sdk_2024.6.0/platform/service/device_manager/clocks/sl_device_clock_efr32xg23.c</name>
@@ -449,6 +504,31 @@
 			<name>simplicity_sdk_2024.6.0/platform/service/device_manager/src/sl_device_peripheral.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/service/device_manager/src/sl_device_peripheral.c</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2024.6.0/platform/service/hfxo_manager/inc/sl_hfxo_manager.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/service/hfxo_manager/inc/sl_hfxo_manager.h</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2024.6.0/platform/service/hfxo_manager/inc/sli_hfxo_manager.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/service/hfxo_manager/inc/sli_hfxo_manager.h</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2024.6.0/platform/service/hfxo_manager/src/sl_hfxo_manager.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/service/hfxo_manager/src/sl_hfxo_manager.c</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2024.6.0/platform/service/hfxo_manager/src/sl_hfxo_manager_hal_s2.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/service/hfxo_manager/src/sl_hfxo_manager_hal_s2.c</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2024.6.0/platform/service/hfxo_manager/src/sli_hfxo_manager_internal.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/service/hfxo_manager/src/sli_hfxo_manager_internal.h</locationURI>
 		</link>
 		<link>
 			<name>simplicity_sdk_2024.6.0/platform/service/interrupt_manager/inc/sl_interrupt_manager.h</name>
@@ -516,6 +596,76 @@
 			<locationURI>STUDIO_SDK_LOC/platform/service/memory_manager/src/sl_memory_manager_region.c</locationURI>
 		</link>
 		<link>
+			<name>simplicity_sdk_2024.6.0/platform/service/power_manager/inc/sl_power_manager.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/service/power_manager/inc/sl_power_manager.h</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2024.6.0/platform/service/power_manager/inc/sl_power_manager_debug.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/service/power_manager/inc/sl_power_manager_debug.h</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2024.6.0/platform/service/power_manager/inc/sli_power_manager.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/service/power_manager/inc/sli_power_manager.h</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2024.6.0/platform/service/power_manager/src/sl_power_manager.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/service/power_manager/src/sl_power_manager.c</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2024.6.0/platform/service/power_manager/src/sl_power_manager_debug.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/service/power_manager/src/sl_power_manager_debug.c</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2024.6.0/platform/service/power_manager/src/sl_power_manager_hal_s2.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/service/power_manager/src/sl_power_manager_hal_s2.c</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2024.6.0/platform/service/power_manager/src/sli_power_manager_private.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/service/power_manager/src/sli_power_manager_private.h</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2024.6.0/platform/service/sleeptimer/inc/sl_sleeptimer.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/service/sleeptimer/inc/sl_sleeptimer.h</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2024.6.0/platform/service/sleeptimer/inc/sli_sleeptimer.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/service/sleeptimer/inc/sli_sleeptimer.h</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2024.6.0/platform/service/sleeptimer/src/sl_sleeptimer.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/service/sleeptimer/src/sl_sleeptimer.c</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2024.6.0/platform/service/sleeptimer/src/sl_sleeptimer_hal_burtc.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/service/sleeptimer/src/sl_sleeptimer_hal_burtc.c</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2024.6.0/platform/service/sleeptimer/src/sl_sleeptimer_hal_sysrtc.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/service/sleeptimer/src/sl_sleeptimer_hal_sysrtc.c</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2024.6.0/platform/service/sleeptimer/src/sl_sleeptimer_hal_timer.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/service/sleeptimer/src/sl_sleeptimer_hal_timer.c</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2024.6.0/platform/service/sleeptimer/src/sli_sleeptimer_hal.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/service/sleeptimer/src/sli_sleeptimer_hal.h</locationURI>
+		</link>
+		<link>
 			<name>simplicity_sdk_2024.6.0/platform/service/system/inc/sl_system_init.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/service/system/inc/sl_system_init.h</locationURI>
@@ -549,6 +699,21 @@
 			<name>simplicity_sdk_2024.6.0/platform/service/udelay/src/sl_udelay_armv6m_gcc.S</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/service/udelay/src/sl_udelay_armv6m_gcc.S</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2024.6.0/app/common/util/app_timer/bm/app_timer.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/app/common/util/app_timer/bm/app_timer.c</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2024.6.0/app/common/util/app_timer/bm/app_timer_internal.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/app/common/util/app_timer/bm/app_timer_internal.h</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2024.6.0/app/common/util/app_timer/bm/app_timer_types.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/app/common/util/app_timer/bm/app_timer_types.h</locationURI>
 		</link>
 		<link>
 			<name>simplicity_sdk_2024.6.0/platform/Device/SiliconLabs/EFR32FG23/Include/efr32fg23_acmp.h</name>

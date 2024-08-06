@@ -20,29 +20,11 @@
  ******************************************************************************/
 #include <stdio.h>
 #include <time.h>
-#include "../Pal/pal_i2c.h"
 int contador = 0;
-
-void my_sleep(unsigned duration)
-{
-    time_t start = time(NULL);
-    double end = duration;
-    time_t now;
-    do {
-        now = time(NULL);
-    } while (difftime(now, start) < end);
-}
-
 
 void app_init(void)
 {
-  /*
-  pal_i2c_t config = {
-    .p_i2c_hw_config = I2C0,
-    .p_upper_layer_ctx = NULL,
-    .upper_layer_event_handler = NULL,
-    .slave_address = OPTIGA_ADDR
-  };*/
+
 }
 
 /***************************************************************************//**
@@ -50,8 +32,5 @@ void app_init(void)
  ******************************************************************************/
 void app_process_action(void)
 {
-  if (contador%2==0)    printf("\na");
-  else                  printf("\nb");
-  //my_sleep(500);
-  contador++;
+  printf("A");
 }

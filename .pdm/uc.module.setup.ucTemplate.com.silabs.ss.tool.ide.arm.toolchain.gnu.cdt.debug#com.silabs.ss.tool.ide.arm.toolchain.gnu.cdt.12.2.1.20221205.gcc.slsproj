@@ -13,6 +13,7 @@
     <file name="sl_iostream_init_instances.h" builtin="true" generated="true"/>
     <file name="sl_iostream_init_usart_instances.c" builtin="true" generated="true"/>
     <file name="sl_iostream_init_usart_instances.h" builtin="true" generated="true"/>
+    <file name="sl_power_manager_handler.c" builtin="true" generated="true"/>
     <file name="linkerfile.ld" builtin="true" generated="true"/>
   </folder>
   <includePath uri="studio:/project/autogen"/>

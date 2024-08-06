@@ -1,9 +1,9 @@
 /***************************************************************************//**
  * @file
- * @brief DEVICE_INIT_EMU Config
+ * @brief HFXO Manager configuration file.
  *******************************************************************************
  * # License
- * <b>Copyright 2019 Silicon Laboratories Inc. www.silabs.com</b>
+ * <b>Copyright 2020 Silicon Laboratories Inc. www.silabs.com</b>
  *******************************************************************************
  *
  * SPDX-License-Identifier: Zlib
@@ -28,26 +28,29 @@
  *
  ******************************************************************************/
 
-#ifndef SL_DEVICE_INIT_EMU_CONFIG_H
-#define SL_DEVICE_INIT_EMU_CONFIG_H
-
-#include "em_emu.h"
-
 // <<< Use Configuration Wizard in Context Menu >>>
 
-// <q> Allow debugger to remain connected in EM2
-// <i> Force PD0B to stay on on EM2 entry. This allows the debugger to remain connected in EM2 and EM3.
-// <i> Enabling debug connectivity results in an increased power consumption in EM2/EM3.
-// <i> Default: 1
-#define SL_DEVICE_INIT_EMU_EM2_DEBUG_ENABLE   1
+#ifndef SL_HFXO_MANAGER_CONFIG_H
+#define SL_HFXO_MANAGER_CONFIG_H
 
-// <o SL_DEVICE_INIT_EMU_EM4_PIN_RETENTION_MODE> EM4 pin retention mode
-// <emuPinRetentionDisable=> No Retention: Pads enter reset state when entering EM4.
-// <emuPinRetentionEm4Exit=> Retention through EM4: Pads enter reset state when exiting EM4.
-// <emuPinRetentionLatch=> Retention through EM4 and wakeup.
-// <i> Default: emuPinRetentionDisable
-#define SL_DEVICE_INIT_EMU_EM4_PIN_RETENTION_MODE  emuPinRetentionDisable
+// <h>HFXO Manager Configuration
+
+// <q SL_HFXO_MANAGER_CUSTOM_HFXO_IRQ_HANDLER> Enable custom IRQ handler for crystal HF oscillator.
+// <i> Enable if HFXO0_IRQHandler is needed from your application.
+// <i> The HFXO IRQ priority must not be changed as the HFXO Manager module needs it to be high priority
+// <i> and to stay enabled through atomic sections.
+// <i> The function sl_hfxo_manager_irq_handler() will have to be called from you custom handler if this is enabled.
+// <i> Default: 0
+#define SL_HFXO_MANAGER_CUSTOM_HFXO_IRQ_HANDLER  0
+
+// <q SL_HFXO_MANAGER_SLEEPY_CRYSTAL_SUPPORT> Enable support for Sleepy Crystals.
+// <i> If Enabled and if HFXO fails to startup due to a sleepy crystal, HFXO Manager will retry the startup with more aggressive settings
+// <i> before falling back to the configured settings.
+// <i> Default: 0
+#define SL_HFXO_MANAGER_SLEEPY_CRYSTAL_SUPPORT  0
+
+// </h>
+
+#endif /* SL_HFXO_MANAGER_CONFIG_H */
 
 // <<< end of configuration section >>>
-
-#endif // SL_DEVICE_INIT_EMU_CONFIG_H

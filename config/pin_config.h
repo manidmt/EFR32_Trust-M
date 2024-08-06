@@ -140,6 +140,22 @@
 // [HFXO0]$
 
 // $[I2C0]
+// I2C0 SCL on PA08
+#ifndef I2C0_SCL_PORT                           
+#define I2C0_SCL_PORT                            gpioPortA
+#endif
+#ifndef I2C0_SCL_PIN                            
+#define I2C0_SCL_PIN                             8
+#endif
+
+// I2C0 SDA on PA07
+#ifndef I2C0_SDA_PORT                           
+#define I2C0_SDA_PORT                            gpioPortA
+#endif
+#ifndef I2C0_SDA_PIN                            
+#define I2C0_SDA_PIN                             7
+#endif
+
 // [I2C0]$
 
 // $[EUSART0]

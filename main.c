@@ -26,6 +26,9 @@
 #include "sl_system_process_action.h"
 #endif // SL_CATALOG_KERNEL_PRESENT
 
+#include "../Pal/pal_i2c.h"
+#include "../Pal/optiga_example.h"
+
 int main(void)
 {
   // Initialize Silicon Labs device, system, service(s) and protocol stack(s).
@@ -36,6 +39,22 @@ int main(void)
   // Initialize the application. For example, create periodic timer(s) or
   // task(s) if the kernel is present.
   app_init();
+
+
+  /*
+    pal_i2c_t config = {
+      .p_i2c_hw_config = I2C0,
+      .p_upper_layer_ctx = NULL,
+      .upper_layer_event_handler = NULL,
+      .slave_address = OPTIGA_ADDR
+    };
+
+  EFR32 defined, so we can use an empty config:
+  */
+
+  pal_i2c_t *config;
+  pal_i2c_init(config);
+  example_optiga_init();
 
 #if defined(SL_CATALOG_KERNEL_PRESENT)
   // Start the kernel. Task(s) created in app_init() will start running.

@@ -1080,7 +1080,10 @@ optiga_lib_status_t optiga_cmd_release_session(optiga_cmd_t *me) {
 }
 
 optiga_lib_status_t optiga_cmd_request_lock(optiga_cmd_t *me, uint8_t lock_type) {
+  printf("optiga_cmd_request_lock: Called with request_type = %d\n", lock_type);
     optiga_cmd_queue_update_slot(me, lock_type);
+    optiga_lib_status_t status = OPTIGA_CMD_SUCCESS;
+    printf("optiga_cmd_request_lock: Returning status = %d\n", status);
     return (OPTIGA_CMD_SUCCESS);
 }
 
@@ -1171,45 +1174,55 @@ _STATIC_H void optiga_cmd_clear_app_ctx(void *p_ctx) {
 #endif
 
 _STATIC_H void optiga_cmd_execute_comms_open(optiga_cmd_t *me, uint8_t *exit_loop) {
+    printf("optiga_cmd_execute_comms_open: Called\n");
     do {
-        *exit_loop = TRUE;
+        *exit_loop = TRUE;  // Se asegura que el bucle se salga en cada iteración a menos que se modifique
         switch (me->cmd_sub_execution_state) {
             case OPTIGA_CMD_EXEC_COMMS_OPEN_ACQUIRE_LOCK: {
-                // add to queue and exit
+                printf("State: OPTIGA_CMD_EXEC_COMMS_OPEN_ACQUIRE_LOCK\n");
                 me->exit_status = optiga_cmd_request_lock(me, OPTIGA_CMD_QUEUE_REQUEST_LOCK);
+                printf("optiga_cmd_request_lock returned status = %d\n", me->exit_status);
                 if (OPTIGA_LIB_SUCCESS != me->exit_status) {
                     EXIT_STATE_WITH_ERROR(me, *exit_loop);
                     break;
                 }
+                // Actualiza el estado para la siguiente iteración
                 me->cmd_sub_execution_state = OPTIGA_CMD_EXEC_COMMS_OPEN_START;
+                printf("Transitioning to state: OPTIGA_CMD_EXEC_COMMS_OPEN_START\n");
                 break;
             }
             case OPTIGA_CMD_EXEC_COMMS_OPEN_START: {
-#ifdef OPTIGA_COMMS_SHIELDED_CONNECTION
+                printf("State: OPTIGA_CMD_EXEC_COMMS_OPEN_START\n");
+                #ifdef OPTIGA_COMMS_SHIELDED_CONNECTION
                 me->p_optiga->p_optiga_comms->protection_level = me->protection_level;
                 me->p_optiga->p_optiga_comms->protocol_version = me->protocol_version;
-                me->p_optiga->p_optiga_comms->manage_context_operation =
-                    me->manage_context_operation;
+                me->p_optiga->p_optiga_comms->manage_context_operation = me->manage_context_operation;
                 me->p_optiga->p_optiga_comms->p_pal_os_event_ctx = me->p_optiga->p_pal_os_event_ctx;
-#endif  // OPTIGA_COMMS_SHIELDED_CONNECTION
+                #endif
 
+                printf("Calling optiga_comms_set_callback_context\n");
                 (void)optiga_comms_set_callback_context(me->p_optiga->p_optiga_comms, me);
+                printf("Calling optiga_comms_open\n");
                 me->exit_status = optiga_comms_open(me->p_optiga->p_optiga_comms);
-
+                printf("optiga_comms_open returned status = %d\n", me->exit_status);
                 if (OPTIGA_LIB_SUCCESS != me->exit_status) {
                     EXIT_STATE_WITH_ERROR(me, *exit_loop);
                     break;
                 }
+                // Actualiza el estado para la siguiente iteración
                 me->cmd_sub_execution_state = OPTIGA_CMD_EXEC_COMMS_OPEN_DONE;
+                printf("Transitioning to state: OPTIGA_CMD_EXEC_COMMS_OPEN_DONE\n");
                 break;
             }
             case OPTIGA_CMD_EXEC_COMMS_OPEN_DONE: {
+                printf("State: OPTIGA_CMD_EXEC_COMMS_OPEN_DONE\n");
                 pal_os_event_register_callback_oneshot(
                     me->p_optiga->p_pal_os_event_ctx,
                     (register_callback)optiga_cmd_event_trigger_execute,
                     me,
                     OPTIGA_CMD_SCHEDULER_RUNNING_TIME_MS
                 );
+                // Actualiza el estado para la siguiente iteración
                 me->cmd_next_execution_state = OPTIGA_CMD_EXEC_PREPARE_COMMAND;
                 me->cmd_sub_execution_state = OPTIGA_CMD_EXEC_PREPARE_APDU;
                 break;
@@ -1217,34 +1230,34 @@ _STATIC_H void optiga_cmd_execute_comms_open(optiga_cmd_t *me, uint8_t *exit_loo
             default:
                 EXIT_STATE_WITH_ERROR(me, *exit_loop);
                 break;
-                // lint --e{788} suppress "Not all states are used as same enum is used for both main and sub state machine."
         }
-
     } while ((FALSE == *exit_loop) && (OPTIGA_CMD_EXEC_COMMS_OPEN == me->cmd_next_execution_state));
+
+    printf("Finishing function\n");
 }
 
+
+
 _STATIC_H void optiga_cmd_execute_comms_close(optiga_cmd_t *me, uint8_t *exit_loop) {
+    printf("optiga_cmd_execute_comms_close: Called\n");
     do {
         *exit_loop = TRUE;
         switch (me->cmd_sub_execution_state) {
             case OPTIGA_CMD_EXEC_COMMS_CLOSE_START: {
-#ifdef OPTIGA_COMMS_SHIELDED_CONNECTION
-                // In case PRL is enabled and save context is not invoked or is PRL is not enabled,
-                // change state to OPTIGA_CMD_EXEC_COMMS_CLOSE_DONE, since it synchronous in nature
+                printf("State: OPTIGA_CMD_EXEC_COMMS_CLOSE_START\n");
+                #ifdef OPTIGA_COMMS_SHIELDED_CONNECTION
                 if (OPTIGA_COMMS_SESSION_CONTEXT_SAVE != me->manage_context_operation) {
                     me->cmd_sub_execution_state = OPTIGA_CMD_EXEC_COMMS_CLOSE_DONE;
                 }
                 me->p_optiga->p_optiga_comms->protection_level = me->protection_level;
                 me->p_optiga->p_optiga_comms->protocol_version = me->protocol_version;
                 if (0 != me->p_optiga->protection_level_state) {
-                    me->p_optiga->p_optiga_comms->manage_context_operation =
-                        me->manage_context_operation;
+                    me->p_optiga->p_optiga_comms->manage_context_operation = me->manage_context_operation;
                 } else {
-                    me->p_optiga->p_optiga_comms->manage_context_operation =
-                        OPTIGA_COMMS_SESSION_CONTEXT_NONE;
+                    me->p_optiga->p_optiga_comms->manage_context_operation = OPTIGA_COMMS_SESSION_CONTEXT_NONE;
                 }
                 me->p_optiga->protection_level_state = 0;
-#endif  // OPTIGA_COMMS_SHIELDED_CONNECTION
+                #endif
                 me->cmd_sub_execution_state = OPTIGA_CMD_EXEC_COMMS_CLOSE_DONE;
 
                 me->p_optiga->p_optiga_comms->p_pal_os_event_ctx = me->p_optiga->p_pal_os_event_ctx;
@@ -1257,47 +1270,43 @@ _STATIC_H void optiga_cmd_execute_comms_close(optiga_cmd_t *me, uint8_t *exit_lo
                     break;
                 }
 
-#ifdef OPTIGA_COMMS_SHIELDED_CONNECTION
-                // In case PRL is enabled and save context is requested,
-                // change state to OPTIGA_CMD_EXEC_COMMS_CLOSE_DONE, since it asynchronous in nature
+                #ifdef OPTIGA_COMMS_SHIELDED_CONNECTION
                 if (OPTIGA_COMMS_SESSION_CONTEXT_SAVE == me->manage_context_operation) {
                     me->cmd_sub_execution_state = OPTIGA_CMD_EXEC_COMMS_CLOSE_DONE;
                     *exit_loop = TRUE;
-                }
-                // For synchronous behavior: After exit from optiga_comms_close, release lock
-                else {
+                } else {
                     me->exit_status = optiga_cmd_release_lock(me);
                 }
-#else
+                #else
                 me->exit_status = optiga_cmd_release_lock(me);
-#endif  // OPTIGA_COMMS_SHIELDED_CONNECTION
+                #endif
                 break;
             }
             case OPTIGA_CMD_EXEC_COMMS_CLOSE_DONE: {
+                printf("State: OPTIGA_CMD_EXEC_COMMS_CLOSE_DONE\n");
                 me->handler(me->caller_context, OPTIGA_LIB_SUCCESS);
-#ifdef OPTIGA_COMMS_SHIELDED_CONNECTION
-                // For asynchronous behavior, change state to release the lock
+                #ifdef OPTIGA_COMMS_SHIELDED_CONNECTION
                 if (OPTIGA_COMMS_SESSION_CONTEXT_SAVE == me->manage_context_operation) {
                     me->exit_status = optiga_cmd_release_lock(me);
                 }
-#endif  // OPTIGA_COMMS_SHIELDED_CONNECTION
+                #endif
                 break;
             }
             default:
                 EXIT_STATE_WITH_ERROR(me, *exit_loop);
                 break;
-                // lint --e{788} suppress "Not all states are used as same enum is used for both main and sub state machine."
         }
-    } while ((FALSE == *exit_loop) && (OPTIGA_CMD_EXEC_COMMS_CLOSE == me->cmd_next_execution_state)
-    );
+    } while ((FALSE == *exit_loop) && (OPTIGA_CMD_EXEC_COMMS_CLOSE == me->cmd_next_execution_state));
 }
 
 _STATIC_H void optiga_cmd_execute_prepare_command(optiga_cmd_t *me, uint8_t *exit_loop) {
+    printf("optiga_cmd_execute_prepare_command: Called\n");
     optiga_cmd_handler_t optiga_cmd_handler = me->cmd_hdlrs;
     do {
         switch (me->cmd_sub_execution_state) {
             case OPTIGA_CMD_EXEC_REQUEST_LOCK:
             case OPTIGA_CMD_EXEC_REQUEST_SESSION: {
+                printf("State: OPTIGA_CMD_EXEC_REQUEST_LOCK / OPTIGA_CMD_EXEC_REQUEST_SESSION\n");
                 *exit_loop = TRUE;
                 if (me->cmd_sub_execution_state == OPTIGA_CMD_EXEC_REQUEST_SESSION) {
                     me->exit_status = optiga_cmd_request_session(me);
@@ -1308,17 +1317,18 @@ _STATIC_H void optiga_cmd_execute_prepare_command(optiga_cmd_t *me, uint8_t *exi
                     EXIT_STATE_WITH_ERROR(me, *exit_loop);
                     break;
                 }
-
                 me->cmd_sub_execution_state = OPTIGA_CMD_EXEC_PREPARE_APDU;
                 break;
             }
             case OPTIGA_CMD_EXEC_RESET_STRICT_LOCK: {
+                printf("State: OPTIGA_CMD_EXEC_RESET_STRICT_LOCK\n");
                 optiga_cmd_release_strict_lock(me);
                 me->cmd_sub_execution_state = OPTIGA_CMD_EXEC_REQUEST_STRICT_LOCK;
                 *exit_loop = FALSE;
                 break;
             }
             case OPTIGA_CMD_EXEC_REQUEST_STRICT_LOCK: {
+                printf("State: OPTIGA_CMD_EXEC_REQUEST_STRICT_LOCK\n");
                 me->exit_status = optiga_cmd_request_lock(me, OPTIGA_CMD_QUEUE_REQUEST_STRICT_LOCK);
                 if (OPTIGA_LIB_SUCCESS != me->exit_status) {
                     EXIT_STATE_WITH_ERROR(me, *exit_loop);
@@ -1329,6 +1339,7 @@ _STATIC_H void optiga_cmd_execute_prepare_command(optiga_cmd_t *me, uint8_t *exi
                 break;
             }
             case OPTIGA_CMD_EXEC_PREPARE_APDU: {
+                printf("State: OPTIGA_CMD_EXEC_PREPARE_APDU\n");
                 *exit_loop = TRUE;
                 me->exit_status = optiga_cmd_handler(me);
                 if (OPTIGA_LIB_SUCCESS != me->exit_status) {
@@ -1337,11 +1348,11 @@ _STATIC_H void optiga_cmd_execute_prepare_command(optiga_cmd_t *me, uint8_t *exi
                     break;
                 }
                 me->p_optiga->comms_rx_size = OPTIGA_CMD_TOTAL_COMMS_BUFFER_SIZE;
-#ifdef OPTIGA_COMMS_SHIELDED_CONNECTION
+                #ifdef OPTIGA_COMMS_SHIELDED_CONNECTION
                 me->p_optiga->p_optiga_comms->protection_level = me->protection_level;
                 me->p_optiga->p_optiga_comms->protocol_version = me->protocol_version;
                 me->p_optiga->protection_level_state |= me->protection_level;
-#endif  // OPTIGA_COMMS_SHIELDED_CONNECTION
+                #endif
                 (void)optiga_comms_set_callback_context(me->p_optiga->p_optiga_comms, me);
                 me->exit_status = optiga_comms_transceive(
                     me->p_optiga->p_optiga_comms,
@@ -1364,11 +1375,10 @@ _STATIC_H void optiga_cmd_execute_prepare_command(optiga_cmd_t *me, uint8_t *exi
             default:
                 EXIT_STATE_WITH_ERROR(me, *exit_loop);
                 break;
-                // lint --e{788} suppress "Not all states are used as same enum is used for both main and sub state machine."
         }
-    } while ((FALSE == *exit_loop)
-             && (OPTIGA_CMD_EXEC_PREPARE_COMMAND == me->cmd_next_execution_state));
+    } while ((FALSE == *exit_loop) && (OPTIGA_CMD_EXEC_PREPARE_COMMAND == me->cmd_next_execution_state));
 }
+
 
 _STATIC_H void optiga_cmd_execute_get_device_error(optiga_cmd_t *me, uint8_t *exit_loop) {
     do {
@@ -1456,18 +1466,21 @@ _STATIC_H void optiga_cmd_execute_process_optiga_response(optiga_cmd_t *me, uint
 }
 
 _STATIC_H void optiga_cmd_execute_process_response(optiga_cmd_t *me, uint8_t *exit_loop) {
+    printf("optiga_cmd_execute_process_response: Called\n");
     do {
         switch (me->cmd_sub_execution_state) {
             case OPTIGA_CMD_EXEC_PROCESS_OPTIGA_RESPONSE: {
+                printf("State: OPTIGA_CMD_EXEC_PROCESS_OPTIGA_RESPONSE\n");
                 optiga_cmd_execute_process_optiga_response(me, exit_loop);
                 break;
             }
             case OPTIGA_CMD_EXEC_GET_DEVICE_ERROR: {
+                printf("State: OPTIGA_CMD_EXEC_GET_DEVICE_ERROR\n");
                 optiga_cmd_execute_get_device_error(me, exit_loop);
                 break;
             }
             case OPTIGA_CMD_EXEC_RELEASE_SESSION: {
-                // lint --e{534} suppress "The return code is not checked because this is exit state."
+                printf("State: OPTIGA_CMD_EXEC_RELEASE_SESSION\n");
                 optiga_cmd_release_session(me);
                 if (OPTIGA_LIB_SUCCESS == me->exit_status) {
                     me->cmd_sub_execution_state = OPTIGA_CMD_EXEC_RELEASE_LOCK;
@@ -1479,13 +1492,14 @@ _STATIC_H void optiga_cmd_execute_process_response(optiga_cmd_t *me, uint8_t *ex
                 break;
             }
             case OPTIGA_CMD_EXEC_RELEASE_LOCK: {
-                // lint --e{534} suppress "The return code is not checked because this is exit state."
+                printf("State: OPTIGA_CMD_EXEC_RELEASE_LOCK\n");
                 optiga_cmd_release_lock(me);
                 me->cmd_sub_execution_state = OPTIGA_CMD_STATE_EXIT;
                 *exit_loop = FALSE;
                 break;
             }
             case OPTIGA_CMD_STATE_EXIT: {
+                printf("State: OPTIGA_CMD_STATE_EXIT\n");
                 me->handler(me->caller_context, me->exit_status);
                 *exit_loop = TRUE;
                 break;
@@ -1493,20 +1507,20 @@ _STATIC_H void optiga_cmd_execute_process_response(optiga_cmd_t *me, uint8_t *ex
             default:
                 EXIT_STATE_WITH_ERROR(me, *exit_loop);
                 break;
-                // lint --e{788} suppress "Not all states are used as same enum is used for both main and sub state machine."
         }
     } while ((FALSE == *exit_loop)
              && (OPTIGA_CMD_EXEC_PROCESS_RESPONSE == me->cmd_next_execution_state));
 }
 
-_STATIC_H void optiga_cmd_execute_error_handler(const optiga_cmd_t *me, uint8_t *exit_loop) {
+_STATIC_H void optiga_cmd_execute_error_handler(optiga_cmd_t *me, uint8_t *exit_loop) {
+    printf("optiga_cmd_execute_error_handler: Called\n");
     do {
-        // lint --e{534} suppress "The return code is not checked because this is exit state."
         optiga_cmd_release_lock(me);
         me->handler(me->caller_context, me->exit_status);
         *exit_loop = TRUE;
     } while (FALSE);
 }
+
 
 _STATIC_H void optiga_cmd_execute_handler(void *p_ctx, optiga_lib_status_t event) {
     uint8_t exit_loop = TRUE;

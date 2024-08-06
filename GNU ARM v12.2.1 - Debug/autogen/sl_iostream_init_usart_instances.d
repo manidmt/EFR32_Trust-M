@@ -2,18 +2,27 @@ autogen/sl_iostream_init_usart_instances.o: \
  ../autogen/sl_iostream_init_usart_instances.c \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\toolchain\inc\sl_gcc_preinclude.h \
  ../autogen/sl_component_catalog.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\power_manager\inc\sl_power_manager.h \
+ C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\TrustM\config/sl_power_manager_config.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_slist.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_status.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\sleeptimer\inc\sl_sleeptimer.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_common.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_assert.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\cmsis\core\include\cmsis_compiler.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\cmsis\core\include\cmsis_gcc.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_code_classification.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sli_code_classification.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_enum.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_core.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_code_classification.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\device\siliconlabs\efr32fg23\include\em_device.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\device\siliconlabs\efr32fg23\include\efr32fg23b010f512im48.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\cmsis\core\include\core_cm33.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\cmsis\core\include\cmsis_version.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\cmsis\core\include\cmsis_compiler.h \
- c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\cmsis\core\include\cmsis_gcc.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\interrupt_manager\inc\arm\cmsis_nvic_virtual.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\interrupt_manager\inc\sl_interrupt_manager.h \
- c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_core.h \
- c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_code_classification.h \
- c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sli_code_classification.h \
- c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_status.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\cmsis\core\include\mpu_armv8.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\device\siliconlabs\efr32fg23\include\system_efr32fg23.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\device\siliconlabs\efr32fg23\include\efr32fg23_scratchpad.h \
@@ -65,7 +74,6 @@ autogen/sl_iostream_init_usart_instances.o: \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\device\siliconlabs\efr32fg23\include\efr32fg23_ldmaxbar_defines.h \
  C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\TrustM\autogen/sl_component_catalog.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\iostream\inc\sl_iostream.h \
- c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_enum.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\iostream\inc\sl_iostream_uart.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\iostream\inc\sl_iostream.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emdrv\dmadrv\inc\dmadrv.h \
@@ -80,8 +88,6 @@ autogen/sl_iostream_init_usart_instances.o: \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_bus.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_cmu_compat.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_gpio.h \
- c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_common.h \
- c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_assert.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\sli_em_cmu.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_gpio.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_usart.h \
@@ -89,18 +95,27 @@ autogen/sl_iostream_init_usart_instances.o: \
  C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\TrustM\config/sl_iostream_usart_vcom_config.h
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\toolchain\inc\sl_gcc_preinclude.h:
 ../autogen/sl_component_catalog.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\power_manager\inc\sl_power_manager.h:
+C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\TrustM\config/sl_power_manager_config.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_slist.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_status.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\sleeptimer\inc\sl_sleeptimer.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_common.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_assert.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\cmsis\core\include\cmsis_compiler.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\cmsis\core\include\cmsis_gcc.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_code_classification.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sli_code_classification.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_enum.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_core.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_code_classification.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\device\siliconlabs\efr32fg23\include\em_device.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\device\siliconlabs\efr32fg23\include\efr32fg23b010f512im48.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\cmsis\core\include\core_cm33.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\cmsis\core\include\cmsis_version.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\cmsis\core\include\cmsis_compiler.h:
-c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\cmsis\core\include\cmsis_gcc.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\interrupt_manager\inc\arm\cmsis_nvic_virtual.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\interrupt_manager\inc\sl_interrupt_manager.h:
-c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_core.h:
-c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_code_classification.h:
-c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sli_code_classification.h:
-c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_status.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\cmsis\core\include\mpu_armv8.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\device\siliconlabs\efr32fg23\include\system_efr32fg23.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\device\siliconlabs\efr32fg23\include\efr32fg23_scratchpad.h:
@@ -152,7 +167,6 @@ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\device\silic
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\device\siliconlabs\efr32fg23\include\efr32fg23_ldmaxbar_defines.h:
 C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\TrustM\autogen/sl_component_catalog.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\iostream\inc\sl_iostream.h:
-c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_enum.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\iostream\inc\sl_iostream_uart.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\iostream\inc\sl_iostream.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emdrv\dmadrv\inc\dmadrv.h:
@@ -167,8 +181,6 @@ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\s
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_bus.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_cmu_compat.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_gpio.h:
-c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_common.h:
-c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_assert.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\sli_em_cmu.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_gpio.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_usart.h:

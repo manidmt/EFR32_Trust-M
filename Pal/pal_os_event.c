@@ -14,6 +14,8 @@
  */
 
 #include "pal_os_event.h"
+#include <unistd.h>
+#include "sl_sleeptimer.h"
 
 static pal_os_event_t pal_os_event_0 = {0};
 
@@ -53,6 +55,11 @@ void pal_os_event_trigger_registered_callback(void) {
     }
 }
 
+static void sleeptimer_callback(sl_sleeptimer_timer_handle_t *handle, void *data) {
+    (void)handle;
+    pal_os_event_trigger_registered_callback();
+}
+
 void pal_os_event_register_callback_oneshot(
     pal_os_event_t *p_pal_os_event,
     register_callback callback,
@@ -62,9 +69,45 @@ void pal_os_event_register_callback_oneshot(
     p_pal_os_event->callback_registered = callback;
     p_pal_os_event->callback_ctx = callback_args;
 
-    // !!!OPTIGA_LIB_PORTING_REQUIRED
-    // User should start the timer here with the
-    // pal_os_event_trigger_registered_callback() function as a callback
+    /*
+    pthread_t timer_thread;
+        struct timer_params {
+            pal_os_event_t *event;
+            uint32_t time_us;
+        } *params = malloc(sizeof(struct timer_params));
+
+        params->event = p_pal_os_event;
+        params->time_us = time_us;
+
+        void *timer_thread_func(void *args) {
+            struct timer_params *params = (struct timer_params *)args;
+            usleep(params->time_us);
+            pal_os_event_trigger_registered_callback();
+            free(params);
+            return NULL;
+        }
+
+    pthread_create(&timer_thread, NULL, timer_thread_func, params);
+    pthread_detach(timer_thread);*/
+
+    p_pal_os_event->callback_registered = callback;
+    p_pal_os_event->callback_ctx = callback_args;
+
+    // Convertir tiempo en microsegundos a milisegundos
+    uint32_t time_ms = (time_us + 999) / 1000; // Redondear hacia arriba
+
+
+    sl_sleeptimer_timer_handle_t timer_handle;
+    sl_status_t status = sl_sleeptimer_start_timer(&timer_handle,
+                                                   time_ms,
+                                                   sleeptimer_callback,
+                                                   p_pal_os_event,
+                                                   0,
+                                                   0);
+
+    if (status != SL_STATUS_OK) {
+
+    }
 }
 
 void pal_os_event_destroy(pal_os_event_t *pal_os_event) {

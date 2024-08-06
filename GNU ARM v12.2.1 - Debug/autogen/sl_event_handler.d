@@ -76,8 +76,14 @@ autogen/sl_event_handler.o: ../autogen/sl_event_handler.c \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\clock_manager\inc\sl_clock_manager.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_enum.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\device_manager\inc\sl_device_clock.h \
- c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\device_init\inc\sl_device_init_emu.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\hfxo_manager\inc\sl_hfxo_manager.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\hardware\board\inc\sl_board_control.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\sleeptimer\inc\sl_sleeptimer.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_code_classification.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\app\common\util\app_timer\bm\app_timer_internal.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\power_manager\inc\sl_power_manager.h \
+ C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\TrustM\config/sl_power_manager_config.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_slist.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\driver\debug\inc\sl_debug_swo.h \
  ../autogen/sl_i2cspm_instances.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\driver\i2cspm\inc\sl_i2cspm.h \
@@ -172,8 +178,14 @@ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\devi
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\clock_manager\inc\sl_clock_manager.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_enum.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\device_manager\inc\sl_device_clock.h:
-c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\device_init\inc\sl_device_init_emu.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\hfxo_manager\inc\sl_hfxo_manager.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\hardware\board\inc\sl_board_control.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\sleeptimer\inc\sl_sleeptimer.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_code_classification.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\app\common\util\app_timer\bm\app_timer_internal.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\power_manager\inc\sl_power_manager.h:
+C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\TrustM\config/sl_power_manager_config.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_slist.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\driver\debug\inc\sl_debug_swo.h:
 ../autogen/sl_i2cspm_instances.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\driver\i2cspm\inc\sl_i2cspm.h:

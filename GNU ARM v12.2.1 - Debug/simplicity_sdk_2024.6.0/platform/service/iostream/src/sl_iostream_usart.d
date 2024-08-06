@@ -72,6 +72,13 @@ simplicity_sdk_2024.6.0/platform/service/iostream/src/sl_iostream_usart.o: \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emdrv\dmadrv\inc\s2_signals\dmadrv_signals.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_ldma.h \
  C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\TrustM\config/dmadrv_config.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\power_manager\inc\sl_power_manager.h \
+ C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\TrustM\config/sl_power_manager_config.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_slist.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\sleeptimer\inc\sl_sleeptimer.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_common.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_assert.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_code_classification.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\iostream\inc\sli_iostream_uart.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\iostream\inc\sl_iostream_uart.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\iostream\inc\sl_iostream_usart.h \
@@ -80,8 +87,6 @@ simplicity_sdk_2024.6.0/platform/service/iostream/src/sl_iostream_usart.o: \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_bus.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_cmu_compat.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_gpio.h \
- c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_common.h \
- c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_assert.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\sli_em_cmu.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_gpio.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_usart.h \
@@ -158,6 +163,13 @@ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emdrv\common
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emdrv\dmadrv\inc\s2_signals\dmadrv_signals.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_ldma.h:
 C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\TrustM\config/dmadrv_config.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\power_manager\inc\sl_power_manager.h:
+C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\TrustM\config/sl_power_manager_config.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_slist.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\sleeptimer\inc\sl_sleeptimer.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_common.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_assert.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_code_classification.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\iostream\inc\sli_iostream_uart.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\iostream\inc\sl_iostream_uart.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\iostream\inc\sl_iostream_usart.h:
@@ -166,8 +178,6 @@ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\s
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_bus.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_cmu_compat.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_gpio.h:
-c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_common.h:
-c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_assert.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\sli_em_cmu.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_gpio.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_usart.h:

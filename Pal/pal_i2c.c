@@ -20,18 +20,6 @@
 #include "sl_i2cspm.h"
 
 
-/*
- * Fot he correct communcation between EFR32 and Optiga Trus-M it shoudl be:
- *
- * pal_i2c_t config = {
- *  .p_i2c_hw_config = I2C0,
- *  .p_upper_layer_ctx = NULL,
- *  .upper_layer_event_handler = NULL,
- *  .slave_address = OPTIGA_ADDR
- * }
- *
- */
-
 #define PAL_I2C_MASTER_MAX_BITRATE (400U)
 
 static volatile uint32_t g_entry_count = 0;

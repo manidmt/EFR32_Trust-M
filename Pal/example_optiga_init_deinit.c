@@ -27,10 +27,13 @@ extern optiga_lib_status_t pair_host_and_optiga_using_pre_shared_secret(void);
 static volatile optiga_lib_status_t optiga_lib_status;
 // lint --e{818} suppress "argument "context" is not used in the sample provided"
 static void optiga_lib_callback(void *context, optiga_lib_status_t return_status) {
+
+    printf("optiga_lib_callback: return_status = %d\n", return_status);
     optiga_lib_status = return_status;
     if (NULL != context) {
         // callback to upper layer here
     }
+    printf("optiga_lib_callback: Exiting callback\n");
 }
 
 optiga_util_t *me_util_instance = NULL;
@@ -47,6 +50,7 @@ void example_optiga_init(void) {
             // Create an instance of optiga_util to open the application on OPTIGA.
             me_util_instance = optiga_util_create(0, optiga_lib_callback, NULL);
             if (NULL == me_util_instance) {
+                printf("Error: Failed to create instance\n");
                 break;
             }
         }
@@ -55,6 +59,7 @@ void example_optiga_init(void) {
          * Open the application on OPTIGA which is a precondition to perform any other operations
          * using optiga_util_open_application
          */
+        printf("Opening application...\n");
         optiga_lib_status = OPTIGA_LIB_BUSY;
         return_status = optiga_util_open_application(me_util_instance, 0);
 
