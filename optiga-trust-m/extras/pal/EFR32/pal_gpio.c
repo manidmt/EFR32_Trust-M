@@ -14,8 +14,6 @@
  */
 
 #include "pal_gpio.h"
-#include "em_gpio.h"
-#include "em_cmu.h"
 
 pal_status_t pal_gpio_init(const pal_gpio_t *p_gpio_context)
 {
@@ -41,7 +39,7 @@ pal_status_t pal_gpio_deinit(const pal_gpio_t *p_gpio_context) {
   }
   efr32_gpio_context_t *gpio_hw = (efr32_gpio_context_t *)p_gpio_context->p_gpio_hw;
 
-  GPIO_PinModeSet(gpio_hw->port, gpio_hw->pin, gpioModeDisabled, 0)
+  GPIO_PinModeSet(gpio_hw->port, gpio_hw->pin, gpioModeDisabled, 0);
 
   return PAL_STATUS_SUCCESS;
 }

@@ -21,6 +21,8 @@ extern "C" {
 #endif
 
 #include "pal.h"
+#include "em_gpio.h"
+#include "em_cmu.h"
 
 typedef struct {
     GPIO_Port_TypeDef port;

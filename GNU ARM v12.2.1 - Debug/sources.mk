@@ -29,6 +29,7 @@ optiga-trust-m/src/crypt \
 optiga-trust-m/src/util \
 simplicity_sdk_2024.6.0/hardware/board/src \
 simplicity_sdk_2024.6.0/hardware/driver/configuration_over_swo/src \
+simplicity_sdk_2024.6.0/platform/CMSIS/RTOS2/Source \
 simplicity_sdk_2024.6.0/platform/Device/SiliconLabs/EFR32FG23/Source \
 simplicity_sdk_2024.6.0/platform/common/src \
 simplicity_sdk_2024.6.0/platform/driver/debug/src \
@@ -47,4 +48,8 @@ simplicity_sdk_2024.6.0/platform/service/memory_manager/src \
 simplicity_sdk_2024.6.0/platform/service/sleeptimer/src \
 simplicity_sdk_2024.6.0/platform/service/system/src \
 simplicity_sdk_2024.6.0/platform/service/udelay/src \
+simplicity_sdk_2024.6.0/util/third_party/freertos/cmsis/Source \
+simplicity_sdk_2024.6.0/util/third_party/freertos/kernel \
+simplicity_sdk_2024.6.0/util/third_party/freertos/kernel/portable/GCC/ARM_CM33_NTZ/non_secure \
+simplicity_sdk_2024.6.0/util/third_party/freertos/kernel/portable/MemMang \
 

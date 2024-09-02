@@ -15,44 +15,55 @@
 
 #include "pal_os_lock.h"
 
+#include "FreeRTOS.h"
+#include "semphr.h"
+
+SemaphoreHandle_t xLockSemaphoreHandle;
+
+volatile uint8_t first_call_flag = 1;
+
+void _lock_init(pal_os_lock_t *p_lock) {
+    xLockSemaphoreHandle = xSemaphoreCreateBinary();
+    pal_os_lock_release(p_lock);
+}
+
 void pal_os_lock_create(pal_os_lock_t *p_lock, uint8_t lock_type) {
     p_lock->type = lock_type;
     p_lock->lock = 0;
 }
 
-void pal_os_lock_destroy(pal_os_lock_t *p_lock) {
-    (void)p_lock;
-}
+// lint --e{715} suppress "p_lock is not used here as it is placeholder for future."
+// lint --e{818} suppress "Not declared as pointer as nothing needs to be updated in the pointer."
+void pal_os_lock_destroy(pal_os_lock_t *p_lock) {}
 
 pal_status_t pal_os_lock_acquire(pal_os_lock_t *p_lock) {
-    pal_status_t return_status = PAL_STATUS_FAILURE;
-
-    // Below is a sample shared resource acquire mechanism
-    // it doesn't provide a guarantee against a deadlock
-    if (!(p_lock->lock)) {
-        p_lock->lock++;
-        if (1 != p_lock->lock) {
-            p_lock->lock--;
-        }
-        return_status = PAL_STATUS_SUCCESS;
+    (void)p_lock;
+    vPortEnterCritical();
+    if (first_call_flag) {
+        _lock_init(p_lock);
+        first_call_flag = 0;
     }
-    return return_status;
+    vPortExitCritical();
+
+    if (xSemaphoreTake(xLockSemaphoreHandle, portMAX_DELAY) == pdTRUE)
+        return PAL_STATUS_SUCCESS;
+    else {
+        return PAL_STATUS_FAILURE;
+    }
 }
 
 void pal_os_lock_release(pal_os_lock_t *p_lock) {
-    // Below is a sample shared resource acquire mechanism
-    // it doesn't provide a guarantee against a deadlock
-    if (0 != p_lock->lock) {
-        p_lock->lock--;
-    }
+    (void)p_lock;
+
+    xSemaphoreGive(xLockSemaphoreHandle);
 }
 
 void pal_os_lock_enter_critical_section() {
-    // For safety critical systems it is recommended to implement a critical section entry
+    vPortEnterCritical();
 }
 
 void pal_os_lock_exit_critical_section() {
-    // For safety critical systems it is recommended to implement a critical section exit
+    vPortExitCritical();
 }
 
 /**

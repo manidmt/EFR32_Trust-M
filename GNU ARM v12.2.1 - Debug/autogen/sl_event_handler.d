@@ -77,6 +77,8 @@ autogen/sl_event_handler.o: ../autogen/sl_event_handler.c \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_enum.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\device_manager\inc\sl_device_clock.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\device_init\inc\sl_device_init_emu.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\memory_manager\inc\sl_memory_manager.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\memory_manager\inc\sl_memory_manager_region.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\hardware\board\inc\sl_board_control.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\sleeptimer\inc\sl_sleeptimer.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_code_classification.h \
@@ -86,6 +88,7 @@ autogen/sl_event_handler.o: ../autogen/sl_event_handler.c \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_gpio.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_i2c.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\iostream\inc\sl_iostream_stdlib_config.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\cmsis\rtos2\include\cmsis_os2.h \
  ../autogen/sl_iostream_init_instances.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\iostream\inc\sl_iostream.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\hardware\driver\configuration_over_swo\inc\sl_cos.h
@@ -167,6 +170,8 @@ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\cloc
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_enum.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\device_manager\inc\sl_device_clock.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\device_init\inc\sl_device_init_emu.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\memory_manager\inc\sl_memory_manager.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\memory_manager\inc\sl_memory_manager_region.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\hardware\board\inc\sl_board_control.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\sleeptimer\inc\sl_sleeptimer.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_code_classification.h:
@@ -176,6 +181,7 @@ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\driver\i2csp
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_gpio.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_i2c.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\iostream\inc\sl_iostream_stdlib_config.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\cmsis\rtos2\include\cmsis_os2.h:
 ../autogen/sl_iostream_init_instances.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\iostream\inc\sl_iostream.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\hardware\driver\configuration_over_swo\inc\sl_cos.h:

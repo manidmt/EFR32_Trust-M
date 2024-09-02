@@ -72,11 +72,22 @@ simplicity_sdk_2024.6.0/platform/service/iostream/src/sl_iostream_uart.o: \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emdrv\dmadrv\inc\s2_signals\dmadrv_signals.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_ldma.h \
  C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\config/dmadrv_config.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\cmsis\rtos2\include\cmsis_os2.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_cmsis_os2_common.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\freertos.h \
+ C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\config/FreeRTOSConfig.h \
+ C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\autogen/RTE_Components.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_assert.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_assert.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\projdefs.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\portable.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\deprecated_definitions.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\portable\gcc\arm_cm33_ntz\non_secure\portmacro.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\mpu_wrappers.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\iostream\inc\sli_iostream_uart.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\iostream\inc\sl_iostream_uart.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_atomic.h \
- c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_string.h \
- c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_assert.h
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_string.h
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\toolchain\inc\sl_gcc_preinclude.h:
 C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\autogen/sl_component_catalog.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_status.h:
@@ -149,8 +160,19 @@ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emdrv\common
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emdrv\dmadrv\inc\s2_signals\dmadrv_signals.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_ldma.h:
 C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\config/dmadrv_config.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\cmsis\rtos2\include\cmsis_os2.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_cmsis_os2_common.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\freertos.h:
+C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\config/FreeRTOSConfig.h:
+C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\autogen/RTE_Components.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_assert.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_assert.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\projdefs.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\portable.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\deprecated_definitions.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\portable\gcc\arm_cm33_ntz\non_secure\portmacro.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\mpu_wrappers.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\iostream\inc\sli_iostream_uart.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\iostream\inc\sl_iostream_uart.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_atomic.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_string.h:
-c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_assert.h:
