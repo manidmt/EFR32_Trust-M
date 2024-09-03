@@ -11,6 +11,7 @@ sl_device_init_dcdc_config.h=1955081430
 sl_device_init_emu_config.h=622680131
 sl_i2cspm_sensor_config.h=1423322145
 sl_interrupt_manager_s2_config.h=1560337863
+sl_iostream_usart_vcom_config.h=-821558555
 sl_memory_config.h=-1757257759
 sl_memory_manager_config.h=-884307627
 sl_memory_manager_region_config.h=1585140969

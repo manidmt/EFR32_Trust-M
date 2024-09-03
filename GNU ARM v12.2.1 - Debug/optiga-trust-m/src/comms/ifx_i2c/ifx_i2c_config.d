@@ -82,6 +82,15 @@ optiga-trust-m/src/comms/ifx_i2c/ifx_i2c_config.o: \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_gpio.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\sli_em_cmu.h \
  C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\optiga-trust-m\include\pal/pal_i2c.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\freertos.h \
+ C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\config/FreeRTOSConfig.h \
+ C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\autogen/RTE_Components.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_assert.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\projdefs.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\portable.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\deprecated_definitions.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\portable\gcc\arm_cm33_ntz\non_secure\portmacro.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\mpu_wrappers.h \
  C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\optiga-trust-m\include\pal/pal_os_datastore.h \
  C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\optiga-trust-m\include\pal/pal_os_timer.h \
  C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\optiga-trust-m\include\pal/pal_ifx_i2c_config.h \
@@ -170,6 +179,15 @@ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_gpio.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\sli_em_cmu.h:
 C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\optiga-trust-m\include\pal/pal_i2c.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\freertos.h:
+C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\config/FreeRTOSConfig.h:
+C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\autogen/RTE_Components.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_assert.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\projdefs.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\portable.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\deprecated_definitions.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\portable\gcc\arm_cm33_ntz\non_secure\portmacro.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\mpu_wrappers.h:
 C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\optiga-trust-m\include\pal/pal_os_datastore.h:
 C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\optiga-trust-m\include\pal/pal_os_timer.h:
 C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\optiga-trust-m\include\pal/pal_ifx_i2c_config.h:

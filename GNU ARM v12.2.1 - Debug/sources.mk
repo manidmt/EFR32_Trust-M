@@ -18,6 +18,7 @@ C_DEPS :=
 SUBDIRS := \
 . \
 autogen \
+optiga-trust-m/example \
 optiga-trust-m/extras/pal/EFR32 \
 optiga-trust-m/extras/pal \
 optiga-trust-m/mbedtls \

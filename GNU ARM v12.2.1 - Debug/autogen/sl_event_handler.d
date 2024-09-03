@@ -88,9 +88,28 @@ autogen/sl_event_handler.o: ../autogen/sl_event_handler.c \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_gpio.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_i2c.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\iostream\inc\sl_iostream_stdlib_config.h \
- c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\cmsis\rtos2\include\cmsis_os2.h \
- ../autogen/sl_iostream_init_instances.h \
+ ../autogen/sl_iostream_init_usart_instances.h \
+ ../autogen/sl_component_catalog.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\iostream\inc\sl_iostream.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\iostream\inc\sl_iostream_uart.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\iostream\inc\sl_iostream.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emdrv\dmadrv\inc\dmadrv.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emdrv\common\inc\ecode.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emdrv\dmadrv\inc\s2_signals\dmadrv_signals.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_ldma.h \
+ C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\config/dmadrv_config.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\cmsis\rtos2\include\cmsis_os2.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_cmsis_os2_common.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\freertos.h \
+ C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\config/FreeRTOSConfig.h \
+ C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\autogen/RTE_Components.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_assert.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\projdefs.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\portable.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\deprecated_definitions.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\portable\gcc\arm_cm33_ntz\non_secure\portmacro.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\mpu_wrappers.h \
+ ../autogen/sl_iostream_init_instances.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\hardware\driver\configuration_over_swo\inc\sl_cos.h
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\toolchain\inc\sl_gcc_preinclude.h:
 ../autogen/sl_event_handler.h:
@@ -181,7 +200,26 @@ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\driver\i2csp
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_gpio.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_i2c.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\iostream\inc\sl_iostream_stdlib_config.h:
-c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\cmsis\rtos2\include\cmsis_os2.h:
-../autogen/sl_iostream_init_instances.h:
+../autogen/sl_iostream_init_usart_instances.h:
+../autogen/sl_component_catalog.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\iostream\inc\sl_iostream.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\iostream\inc\sl_iostream_uart.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\service\iostream\inc\sl_iostream.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emdrv\dmadrv\inc\dmadrv.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emdrv\common\inc\ecode.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emdrv\dmadrv\inc\s2_signals\dmadrv_signals.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_ldma.h:
+C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\config/dmadrv_config.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\cmsis\rtos2\include\cmsis_os2.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_cmsis_os2_common.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\freertos.h:
+C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\config/FreeRTOSConfig.h:
+C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\autogen/RTE_Components.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_assert.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\projdefs.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\portable.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\deprecated_definitions.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\portable\gcc\arm_cm33_ntz\non_secure\portmacro.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\mpu_wrappers.h:
+../autogen/sl_iostream_init_instances.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\hardware\driver\configuration_over_swo\inc\sl_cos.h:

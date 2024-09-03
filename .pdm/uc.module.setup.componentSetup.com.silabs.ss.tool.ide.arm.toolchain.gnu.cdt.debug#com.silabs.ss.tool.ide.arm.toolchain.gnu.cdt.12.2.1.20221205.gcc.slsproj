@@ -78,6 +78,7 @@
           <file name="sl_core.h" uri="studio:/sdk/platform/common/inc/sl_core.h"/>
           <file name="sl_string.h" uri="studio:/sdk/platform/common/inc/sl_string.h"/>
           <file name="sl_status.h" uri="studio:/sdk/platform/common/inc/sl_status.h"/>
+          <file name="sl_stdio.h" uri="studio:/sdk/platform/common/inc/sl_stdio.h"/>
         </folder>
         <folder name="src">
           <file name="sli_cmsis_os2_ext_task_register.c" uri="studio:/sdk/platform/common/src/sli_cmsis_os2_ext_task_register.c"/>
@@ -85,6 +86,7 @@
           <file name="sl_core_cortexm.c" uri="studio:/sdk/platform/common/src/sl_core_cortexm.c"/>
           <file name="sl_string.c" uri="studio:/sdk/platform/common/src/sl_string.c"/>
           <file name="sl_syscalls.c" uri="studio:/sdk/platform/common/src/sl_syscalls.c"/>
+          <file name="sl_stdio.c" uri="studio:/sdk/platform/common/src/sl_stdio.c"/>
         </folder>
         <folder name="toolchain">
           <folder name="inc">

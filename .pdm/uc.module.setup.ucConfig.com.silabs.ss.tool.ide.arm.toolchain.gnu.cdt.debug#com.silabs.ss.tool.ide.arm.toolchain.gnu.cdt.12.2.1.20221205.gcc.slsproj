@@ -17,6 +17,7 @@
     <file name="FreeRTOSConfig.h" generated="true" linked="false"/>
     <file name="sl_memory_manager_region_config.h" generated="true" linked="false"/>
     <file name="sl_memory_manager_config.h" generated="true" linked="false"/>
+    <file name="sl_iostream_usart_vcom_config.h" generated="true" linked="false"/>
   </folder>
   <includePath uri="studio:/project/config"/>
 </project>

@@ -26,6 +26,9 @@ extern "C" {
 
 #include "pal.h"
 
+
+#include "FreeRTOS.h"
+
 /// Event returned when I2C master completes execution
 #define PAL_I2C_EVENT_SUCCESS (0x0000)
 /// Event returned when I2C master operation fails

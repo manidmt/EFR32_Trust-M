@@ -13,6 +13,7 @@
 #include "sl_debug_swo.h"
 #include "sl_i2cspm_instances.h"
 #include "sl_iostream_stdlib_config.h"
+#include "sl_iostream_init_usart_instances.h"
 #include "cmsis_os2.h"
 #include "sl_iostream_init_instances.h"
 #include "sl_cos.h"
@@ -61,5 +62,6 @@ void sl_internal_app_init(void)
 
 void sl_iostream_init_instances(void)
 {
+  sl_iostream_usart_init_instances();
 }
 

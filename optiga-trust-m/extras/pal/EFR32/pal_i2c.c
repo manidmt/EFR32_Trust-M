@@ -19,32 +19,58 @@
 #include "em_cmu.h" // For clock management
 #include "sl_i2cspm.h"
 
+#include "queue.h"
+#include "semphr.h"
 
 #define PAL_I2C_MASTER_MAX_BITRATE (400U)
 
 static volatile uint32_t g_entry_count = 0;
 static pal_i2c_t *gp_pal_i2c_current_ctx;
 
-static pal_status_t pal_i2c_acquire(const void *p_i2c_context) {
-    // To avoid compiler errors/warnings. This context might be used by a target
-    // system to implement a proper mutex handling
-    (void)p_i2c_context;
+QueueHandle_t trustx_i2cresult_queue;
 
-    if (0 == g_entry_count) {
-        g_entry_count++;
-        if (1 == g_entry_count) {
-            return PAL_STATUS_SUCCESS;
-        }
-    }
-    return PAL_STATUS_FAILURE;
+typedef struct i2c_result {
+    /// Pointer to store upper layer callback context (For example: Ifx i2c context)
+    pal_i2c_t *i2c_ctx;
+    /// I2C Transmission result (e.g. PAL_I2C_EVENT_SUCCESS)
+    uint16_t i2c_result;
+} i2c_result_t;
+
+TaskHandle_t xIicCallbackTaskHandle = NULL;
+SemaphoreHandle_t xIicSemaphoreHandle;
+
+// I2C acquire bus function
+// lint --e{715} suppress the unused p_i2c_context variable lint error , since this is kept for future enhancements
+static pal_status_t pal_i2c_acquire(const void *p_i2c_context) {
+
+    BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+
+    if (xSemaphoreTakeFromISR(xIicSemaphoreHandle, &xHigherPriorityTaskWoken) == pdTRUE)
+        return PAL_STATUS_SUCCESS;
+    else
+        return PAL_STATUS_FAILURE;
+//    (void)p_i2c_context;
+//
+//    if (0 == g_entry_count) {
+//        g_entry_count++;
+//        if (1 == g_entry_count) {
+//            return PAL_STATUS_SUCCESS;
+//        }
+//    }
+//    return PAL_STATUS_FAILURE;
 }
 
+// I2C release bus function
+// lint --e{715} suppress the unused p_i2c_context variable lint, since this is kept for future enhancements
 static void pal_i2c_release(const void *p_i2c_context) {
-    // To avoid compiler errors/warnings. This context might be used by a target
-    // system to implement a proper mutex handling
-    (void)p_i2c_context;
 
-    g_entry_count = 0;
+    BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+
+    xSemaphoreGiveFromISR(xIicSemaphoreHandle, &xHigherPriorityTaskWoken);
+
+//    (void)p_i2c_context;
+//
+//    g_entry_count = 0;
 }
 
 void invoke_upper_layer_callback(const pal_i2c_t *p_pal_i2c_ctx, optiga_lib_status_t event) {
@@ -61,15 +87,65 @@ void invoke_upper_layer_callback(const pal_i2c_t *p_pal_i2c_ctx, optiga_lib_stat
 // !!!OPTIGA_LIB_PORTING_REQUIRED
 // The next 5 functions are required only in case you have interrupt based i2c implementation
 void i2c_master_end_of_transmit_callback(void) {
-    invoke_upper_layer_callback(gp_pal_i2c_current_ctx, PAL_I2C_EVENT_SUCCESS);
+
+    i2c_result_t i2_result;
+    BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+
+    i2_result.i2c_ctx = gp_pal_i2c_current_ctx;
+    i2_result.i2c_result = PAL_I2C_EVENT_SUCCESS;
+
+    /*
+     * You cann't call callback from the timer callback, this might lead to a corruption
+     * Use queues instead to activate corresponding handler
+     * */
+    xQueueSendFromISR(trustx_i2cresult_queue, (void *)&i2_result, &xHigherPriorityTaskWoken);
+  //invoke_upper_layer_callback(gp_pal_i2c_current_ctx, PAL_I2C_EVENT_SUCCESS);
 }
 
 void i2c_master_end_of_receive_callback(void) {
-    invoke_upper_layer_callback(gp_pal_i2c_current_ctx, PAL_I2C_EVENT_SUCCESS);
+
+    i2c_result_t i2_result;
+    BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+
+    i2_result.i2c_ctx = gp_pal_i2c_current_ctx;
+    i2_result.i2c_result = PAL_I2C_EVENT_SUCCESS;
+
+    /*
+     * You cann't call callback from the timer callback, this might lead to a corruption
+     * Use queues instead to activate corresponding handler
+     * */
+    xQueueSendFromISR(trustx_i2cresult_queue, (void *)&i2_result, &xHigherPriorityTaskWoken);
+    //invoke_upper_layer_callback(gp_pal_i2c_current_ctx, PAL_I2C_EVENT_SUCCESS);
 }
 
 void i2c_master_error_detected_callback(void) {
-    invoke_upper_layer_callback(gp_pal_i2c_current_ctx, PAL_I2C_EVENT_ERROR);
+
+    I2C_TypeDef *p_i2c_master;
+    i2c_result_t i2_result;
+    BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+
+    p_i2c_master = gp_pal_i2c_current_ctx->p_i2c_hw_config;
+
+    if (I2C_IntGet(p_i2c_master) & I2C_IF_TXC) {
+
+        I2C_IntDisable(p_i2c_master, I2C_IF_TXC);
+        I2C_Reset(p_i2c_master);
+    }
+
+    // Abortar la recepción si está ocupada
+    if (I2C_IntGet(p_i2c_master) & I2C_IF_RXDATAV) {
+
+        I2C_IntDisable(p_i2c_master, I2C_IF_RXDATAV);
+        I2C_Reset(p_i2c_master);
+    }
+    i2_result.i2c_ctx = gp_pal_i2c_current_ctx;
+    i2_result.i2c_result = PAL_I2C_EVENT_ERROR;
+
+    xQueueSendFromISR(trustx_i2cresult_queue, (void *)&i2_result, &xHigherPriorityTaskWoken);
+
+    portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+
+    //invoke_upper_layer_callback(gp_pal_i2c_current_ctx, PAL_I2C_EVENT_ERROR);
 }
 
 void i2c_master_nack_received_callback(void) {
@@ -78,6 +154,19 @@ void i2c_master_nack_received_callback(void) {
 
 void i2c_master_arbitration_lost_callback(void) {
     i2c_master_error_detected_callback();
+}
+
+void i2c_result_handler(void *pvParameters) {
+
+    i2c_result_t i2_result;
+
+    do {
+        if (xQueueReceive(trustx_i2cresult_queue, &(i2_result), (TickType_t)portMAX_DELAY)) {
+            invoke_upper_layer_callback(i2_result.i2c_ctx, i2_result.i2c_result);
+        }
+    } while (1);
+
+    vTaskDelete(NULL);
 }
 
 pal_status_t pal_i2c_init(const pal_i2c_t *p_i2c_context) {

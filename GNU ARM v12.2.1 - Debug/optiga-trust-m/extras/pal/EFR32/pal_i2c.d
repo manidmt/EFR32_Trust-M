@@ -4,7 +4,9 @@ optiga-trust-m/extras/pal/EFR32/pal_i2c.o: \
  C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\optiga-trust-m\include\pal/pal_i2c.h \
  C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\optiga-trust-m\include\pal/pal.h \
  C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\optiga-trust-m\include\common/optiga_lib_types.h \
- c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_i2c.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\freertos.h \
+ C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\config/FreeRTOSConfig.h \
+ C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\autogen/RTE_Components.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\device\siliconlabs\efr32fg23\include\em_device.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\device\siliconlabs\efr32fg23\include\efr32fg23b010f512im48.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\cmsis\core\include\core_cm33.h \
@@ -67,10 +69,17 @@ optiga-trust-m/extras/pal/EFR32/pal_i2c.o: \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\device\siliconlabs\efr32fg23\include\efr32fg23_dma_descriptor.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\device\siliconlabs\efr32fg23\include\efr32fg23_ldmaxbar_defines.h \
  C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\autogen/sl_component_catalog.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_assert.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_assert.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\projdefs.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\portable.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\deprecated_definitions.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\portable\gcc\arm_cm33_ntz\non_secure\portmacro.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\mpu_wrappers.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_i2c.h \
  C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\optiga-trust-m\include/optiga_lib_config.h \
  C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\optiga-trust-m\include/optiga_lib_config_m_v3.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_cmu.h \
- c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_assert.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_bus.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_cmu_compat.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_gpio.h \
@@ -79,12 +88,19 @@ optiga-trust-m/extras/pal/EFR32/pal_i2c.o: \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_enum.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\sli_em_cmu.h \
  c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\driver\i2cspm\inc\sl_i2cspm.h \
- c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_gpio.h
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_gpio.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\queue.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\task.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\list.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\semphr.h \
+ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\queue.h
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\toolchain\inc\sl_gcc_preinclude.h:
 C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\optiga-trust-m\include\pal/pal_i2c.h:
 C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\optiga-trust-m\include\pal/pal.h:
 C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\optiga-trust-m\include\common/optiga_lib_types.h:
-c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_i2c.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\freertos.h:
+C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\config/FreeRTOSConfig.h:
+C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\autogen/RTE_Components.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\device\siliconlabs\efr32fg23\include\em_device.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\device\siliconlabs\efr32fg23\include\efr32fg23b010f512im48.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\cmsis\core\include\core_cm33.h:
@@ -147,10 +163,17 @@ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\device\silic
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\device\siliconlabs\efr32fg23\include\efr32fg23_dma_descriptor.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\device\siliconlabs\efr32fg23\include\efr32fg23_ldmaxbar_defines.h:
 C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\autogen/sl_component_catalog.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_assert.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_assert.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\projdefs.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\portable.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\deprecated_definitions.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\portable\gcc\arm_cm33_ntz\non_secure\portmacro.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\mpu_wrappers.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_i2c.h:
 C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\optiga-trust-m\include/optiga_lib_config.h:
 C:\Users\DiazMecoterr\SimplicityStudio\v5_workspace\Optiga\optiga-trust-m\include/optiga_lib_config_m_v3.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_cmu.h:
-c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\sl_assert.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_bus.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_cmu_compat.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_gpio.h:
@@ -160,3 +183,8 @@ c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\common\inc\s
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\sli_em_cmu.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\driver\i2cspm\inc\sl_i2cspm.h:
 c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\platform\emlib\inc\em_gpio.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\queue.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\task.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\list.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\semphr.h:
+c:\users\diazmecoterr\simplicitystudio\sdks\simplicity_sdk\util\third_party\freertos\kernel\include\queue.h:

@@ -34,8 +34,7 @@
 
 uint32_t pal_os_timer_get_time_in_microseconds(void)
 {
-    return TIMER_CounterGet(TIMER0);
-  //return xTaskGetTickCount();
+    return xTaskGetTickCount() * 1000;
 }
 
 uint32_t pal_os_timer_get_time_in_milliseconds(void)

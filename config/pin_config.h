@@ -82,6 +82,22 @@
 // [TIMER4]$
 
 // $[USART0]
+// USART0 RX on PA10
+#ifndef USART0_RX_PORT                          
+#define USART0_RX_PORT                           gpioPortA
+#endif
+#ifndef USART0_RX_PIN                           
+#define USART0_RX_PIN                            10
+#endif
+
+// USART0 TX on PA09
+#ifndef USART0_TX_PORT                          
+#define USART0_TX_PORT                           gpioPortA
+#endif
+#ifndef USART0_TX_PIN                           
+#define USART0_TX_PIN                            9
+#endif
+
 // [USART0]$
 
 // $[I2C1]

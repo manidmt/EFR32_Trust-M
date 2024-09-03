@@ -96,6 +96,11 @@
 			<locationURI>STUDIO_SDK_LOC/platform/common/inc/sl_status.h</locationURI>
 		</link>
 		<link>
+			<name>simplicity_sdk_2024.6.0/platform/common/inc/sl_stdio.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/common/inc/sl_stdio.h</locationURI>
+		</link>
+		<link>
 			<name>simplicity_sdk_2024.6.0/platform/common/inc/sl_string.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/common/inc/sl_string.h</locationURI>
@@ -119,6 +124,11 @@
 			<name>simplicity_sdk_2024.6.0/platform/common/src/sl_core_cortexm.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/common/src/sl_core_cortexm.c</locationURI>
+		</link>
+		<link>
+			<name>simplicity_sdk_2024.6.0/platform/common/src/sl_stdio.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/common/src/sl_stdio.c</locationURI>
 		</link>
 		<link>
 			<name>simplicity_sdk_2024.6.0/platform/common/src/sl_string.c</name>
