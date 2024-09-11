@@ -23,11 +23,13 @@ SemaphoreHandle_t xLockSemaphoreHandle;
 volatile uint8_t first_call_flag = 1;
 
 void _lock_init(pal_os_lock_t *p_lock) {
+
     xLockSemaphoreHandle = xSemaphoreCreateBinary();
     pal_os_lock_release(p_lock);
 }
 
 void pal_os_lock_create(pal_os_lock_t *p_lock, uint8_t lock_type) {
+
     p_lock->type = lock_type;
     p_lock->lock = 0;
 }
@@ -37,6 +39,7 @@ void pal_os_lock_create(pal_os_lock_t *p_lock, uint8_t lock_type) {
 void pal_os_lock_destroy(pal_os_lock_t *p_lock) {}
 
 pal_status_t pal_os_lock_acquire(pal_os_lock_t *p_lock) {
+
     (void)p_lock;
     vPortEnterCritical();
     if (first_call_flag) {
@@ -53,16 +56,19 @@ pal_status_t pal_os_lock_acquire(pal_os_lock_t *p_lock) {
 }
 
 void pal_os_lock_release(pal_os_lock_t *p_lock) {
+
     (void)p_lock;
 
     xSemaphoreGive(xLockSemaphoreHandle);
 }
 
 void pal_os_lock_enter_critical_section() {
+
     vPortEnterCritical();
 }
 
 void pal_os_lock_exit_critical_section() {
+
     vPortExitCritical();
 }
 
