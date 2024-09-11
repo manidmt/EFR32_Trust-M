@@ -1,2 +1,3 @@
-# Empty C Example
-This example project shows an empty configuration that can be used as a starting point to add components and functionality.
+# EFR32 drivers for Optiga Trut M
+
+Project involving the creation of drivers between the EFR32 and Optiga Trust M using I/O Stream over USART and FreeRTOS
