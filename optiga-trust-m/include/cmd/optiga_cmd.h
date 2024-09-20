@@ -20,6 +20,9 @@
 extern "C" {
 #endif
 
+#define DEPURATION_BY_PRINTING
+#define CHANGES
+
 #include "optiga_lib_common.h"
 
 /** \brief OPTIGA command instance structure type*/

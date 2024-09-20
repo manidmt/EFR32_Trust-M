@@ -63,6 +63,9 @@ extern optiga_lib_status_t ifx_i2c_pl_write_slave_address(
 
 optiga_lib_status_t ifx_i2c_open(ifx_i2c_context_t *p_ctx) {
     optiga_lib_status_t api_status = (int32_t)IFX_I2C_STACK_ERROR;
+#ifdef DEPURATION_BY_PRINTING
+    printf("ifx_i2c_open: Initializing I2C opening\n");
+#endif
 
     // If api status is not busy, proceed
     if ((IFX_I2C_STATUS_BUSY != p_ctx->status)) {
@@ -75,10 +78,19 @@ optiga_lib_status_t ifx_i2c_open(ifx_i2c_context_t *p_ctx) {
             p_ctx->reset_state = IFX_I2C_STATE_RESET_PIN_LOW;
             p_ctx->do_pal_init = TRUE;
             p_ctx->state = IFX_I2C_STATE_UNINIT;
-
+#ifdef  DEPURATION_BY_PRINTING
+            printf("ifx_i2c_open: State after initializing: %d\n", p_ctx->state);
+            printf("ifx_i2c_open: Calling ifx_i2c_init\n");
+#endif
             api_status = ifx_i2c_init(p_ctx);
+#ifdef  DEPURATION_BY_PRINTING
+            printf("ifx_i2c_open: Status after ifx_i2c_init: %d\n", api_status);
+#endif
             if (IFX_I2C_STACK_SUCCESS == api_status) {
                 p_ctx->status = IFX_I2C_STATUS_BUSY;
+#ifdef  DEPURATION_BY_PRINTING
+                printf("ifx_i2c_open: I2C status set to BUSY\n");
+#endif
             }
         } while (FALSE);
     }
@@ -246,11 +258,17 @@ _STATIC_H void ifx_i2c_prl_close_event_handler(
 #endif
 _STATIC_H optiga_lib_status_t ifx_i2c_init(ifx_i2c_context_t *p_ifx_i2c_context) {
     optiga_lib_status_t api_status = IFX_I2C_STACK_ERROR;
+#ifdef  DEPURATION_BY_PRINTING
+    printf("ifx_i2c_init: Iniciando inicialización de I2C, reset_type = %d, reset_state = %d\n", p_ifx_i2c_context->reset_type, p_ifx_i2c_context->reset_state);
+#endif
 
     if (((uint8_t)IFX_I2C_WARM_RESET == p_ifx_i2c_context->reset_type)
         || ((uint8_t)IFX_I2C_COLD_RESET == p_ifx_i2c_context->reset_type)) {
         switch (p_ifx_i2c_context->reset_state) {
             case IFX_I2C_STATE_RESET_PIN_LOW: {
+#ifdef  DEPURATION_BY_PRINTING
+                printf("ifx_i2c_init: Estado IFX_I2C_STATE_RESET_PIN_LOW\n");
+#endif
                 // Setting the Vdd & Reset pin to low
                 if ((uint8_t)IFX_I2C_COLD_RESET == p_ifx_i2c_context->reset_type) {
                     pal_gpio_set_low(p_ifx_i2c_context->p_slave_vdd_pin);
@@ -263,10 +281,16 @@ _STATIC_H optiga_lib_status_t ifx_i2c_init(ifx_i2c_context_t *p_ifx_i2c_context)
                     (void *)p_ifx_i2c_context,
                     RESET_LOW_TIME_MSEC
                 );
+#ifdef  DEPURATION_BY_PRINTING
+                printf("ifx_i2c_init: Registrado callback para IFX_I2C_STATE_RESET_PIN_HIGH\n");
+#endif
                 api_status = IFX_I2C_STACK_SUCCESS;
                 break;
             }
             case IFX_I2C_STATE_RESET_PIN_HIGH: {
+#ifdef  DEPURATION_BY_PRINTING
+                printf("ifx_i2c_init: Estado IFX_I2C_STATE_RESET_PIN_HIGH\n");
+#endif
                 // Setting the Vdd & Reset pin to high
                 if ((uint8_t)IFX_I2C_COLD_RESET == p_ifx_i2c_context->reset_type) {
                     pal_gpio_set_high(p_ifx_i2c_context->p_slave_vdd_pin);
@@ -279,10 +303,16 @@ _STATIC_H optiga_lib_status_t ifx_i2c_init(ifx_i2c_context_t *p_ifx_i2c_context)
                     (void *)p_ifx_i2c_context,
                     STARTUP_TIME_MSEC
                 );
+#ifdef  DEPURATION_BY_PRINTING
+                printf("ifx_i2c_init: Registrado callback para IFX_I2C_STATE_RESET_INIT\n");
+#endif
                 api_status = IFX_I2C_STACK_SUCCESS;
                 break;
             }
             case IFX_I2C_STATE_RESET_INIT: {
+#ifdef  DEPURATION_BY_PRINTING
+                printf("ifx_i2c_init: Estado IFX_I2C_STATE_RESET_INIT\n");
+#endif
                 // Frequency and frame size negotiation
 #ifndef OPTIGA_COMMS_SHIELDED_CONNECTION
                 api_status = ifx_i2c_tl_init(p_ifx_i2c_context, ifx_i2c_tl_event_handler);
@@ -297,6 +327,9 @@ _STATIC_H optiga_lib_status_t ifx_i2c_init(ifx_i2c_context_t *p_ifx_i2c_context)
     }
     // soft reset
     else {
+#ifdef  DEPURATION_BY_PRINTING
+        printf("ifx_i2c_init: Estado Soft Reset\n");
+#endif
         p_ifx_i2c_context->pl.request_soft_reset = (uint8_t)TRUE;  // Soft reset
 #ifndef OPTIGA_COMMS_SHIELDED_CONNECTION
         api_status = ifx_i2c_tl_init(p_ifx_i2c_context, ifx_i2c_tl_event_handler);
@@ -307,6 +340,9 @@ _STATIC_H optiga_lib_status_t ifx_i2c_init(ifx_i2c_context_t *p_ifx_i2c_context)
     if (api_status != IFX_I2C_STACK_SUCCESS) {
         ifx_i2c_tl_event_handler(p_ifx_i2c_context, api_status, 0, 0);
     }
+#ifdef  DEPURATION_BY_PRINTING
+    printf("ifx_i2c_init: Finalización de ifx_i2c_init, api_status = %d\n", api_status);
+#endif
     return (api_status);
 }
 /// @endcond

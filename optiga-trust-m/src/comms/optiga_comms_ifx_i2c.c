@@ -93,6 +93,9 @@ optiga_comms_set_callback_context(optiga_comms_t *p_optiga_comms, void *context)
 /// @endcond
 
 optiga_lib_status_t optiga_comms_open(optiga_comms_t *p_ctx) {
+#ifdef DEPURATION_BY_PRINTING
+        printf("optiga_comms_open: Opening communications\n");
+#endif
     optiga_lib_status_t status = OPTIGA_COMMS_ERROR;
     if (OPTIGA_COMMS_SUCCESS == check_optiga_comms_state(p_ctx)) {
         ((ifx_i2c_context_t *)(p_ctx->p_comms_ctx))->p_upper_layer_ctx = (void *)p_ctx;
@@ -109,6 +112,9 @@ optiga_lib_status_t optiga_comms_open(optiga_comms_t *p_ctx) {
             p_ctx->state = OPTIGA_COMMS_FREE;
         }
     }
+#ifdef DEPURATION_BY_PRINTING
+        printf("optiga_comms_open: Communications opened\n");
+#endif
     return (status);
 }
 
@@ -191,6 +197,9 @@ _STATIC_H optiga_lib_status_t check_optiga_comms_state(optiga_comms_t *p_ctx) {
 
 // lint --e{818} suppress "This is ignored as upper layer handler function prototype requires this argument"
 _STATIC_H void ifx_i2c_event_handler(void *p_upper_layer_ctx, optiga_lib_status_t event) {
+#ifdef DEPURATION_BY_PRINTING
+    printf("ifx_i2c_event_handler: Event received = %d, context = %p\n", event, p_upper_layer_ctx);
+#endif
     void *ctx = ((optiga_comms_t *)p_upper_layer_ctx)->p_upper_layer_ctx;
     ((optiga_comms_t *)p_upper_layer_ctx)->upper_layer_handler(ctx, event);
     ((optiga_comms_t *)p_upper_layer_ctx)->state = OPTIGA_COMMS_FREE;

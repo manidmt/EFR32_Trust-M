@@ -27,7 +27,10 @@ extern optiga_lib_status_t pair_host_and_optiga_using_pre_shared_secret(void);
 static volatile optiga_lib_status_t optiga_lib_status;
 // lint --e{818} suppress "argument "context" is not used in the sample provided"
 static void optiga_lib_callback(void *context, optiga_lib_status_t return_status) {
-
+#ifdef DEPURATION_BY_PRINTING
+    printf("optiga_lib_callback: return_status = %d, context = %p\n", return_status, context);
+#endif
+    printf("optiga_lib_callback: Entered\n");
     printf("optiga_lib_callback: return_status = %d\n", return_status);
     optiga_lib_status = return_status;
     if (NULL != context) {
@@ -62,6 +65,7 @@ void example_optiga_init(void) {
         printf("Opening application...\n");
         optiga_lib_status = OPTIGA_LIB_BUSY;
         return_status = optiga_util_open_application(me_util_instance, 0);
+        printf("optiga_util_open_application return status = %d\n", return_status);
 
         if (OPTIGA_LIB_SUCCESS != return_status) {
           optiga_lib_print_message("encrypt_ecb api returns error",

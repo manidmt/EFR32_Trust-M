@@ -13,6 +13,8 @@
  * @{
  */
 
+#define DEPURATION_BY_PRINTING
+
 #ifndef _OPTIGA_COMMS_H_
 #define _OPTIGA_COMMS_H_
 

@@ -60,6 +60,9 @@ extern void optiga_cmd_set_shielded_connection_option(
 );
 
 _STATIC_H void optiga_util_generic_event_handler(void *me, optiga_lib_status_t event) {
+#ifdef DEPURATION_BY_PRINTING
+    printf("optiga_util_generic_event_handler: event = %d, me = %p\n", event, me);
+#endif
     optiga_util_t *p_optiga_util = (optiga_util_t *)me;
 
     p_optiga_util->instance_state = OPTIGA_LIB_INSTANCE_FREE;

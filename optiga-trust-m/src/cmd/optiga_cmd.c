@@ -729,6 +729,12 @@ _STATIC_H void optiga_cmd_prepare_tag_header(
 }
 
 _STATIC_H void optiga_cmd_event_trigger_execute(void *p_ctx) {
+#ifdef DEPURATION_BY_PRINTING
+    printf("optiga_cmd_event_trigger_execute: Handler called, context = %p\n", p_ctx);
+    optiga_cmd_t *cmd = (optiga_cmd_t *)p_ctx;
+    printf("optiga_cmd_event_trigger_execute: Actual state = %d, actual sub_state = %d\n",
+               cmd->cmd_next_execution_state, cmd->cmd_sub_execution_state);
+#endif
     optiga_cmd_execute_handler(p_ctx, OPTIGA_LIB_SUCCESS);
 }
 
@@ -1180,12 +1186,33 @@ _STATIC_H void optiga_cmd_execute_comms_open(optiga_cmd_t *me, uint8_t *exit_loo
         switch (me->cmd_sub_execution_state) {
             case OPTIGA_CMD_EXEC_COMMS_OPEN_ACQUIRE_LOCK: {
                 // add to queue and exit
+#ifdef DEPURATION_BY_PRINTING
+                printf("optiga_cmd_execute_comms_open: Acquiring lock\n");
+#endif
                 me->exit_status = optiga_cmd_request_lock(me, OPTIGA_CMD_QUEUE_REQUEST_LOCK);
+#ifdef DEPURATION_BY_PRINTING
+                printf("optiga_cmd_execute_comms_open: Lock acquired, exit_status = %d\n", me->exit_status);
+#endif
                 if (OPTIGA_LIB_SUCCESS != me->exit_status) {
                     EXIT_STATE_WITH_ERROR(me, *exit_loop);
                     break;
                 }
                 me->cmd_sub_execution_state = OPTIGA_CMD_EXEC_COMMS_OPEN_START;
+
+#ifdef DEPURATION_BY_PRINTING
+                printf("optiga_cmd_execute_comms_open: "
+                    "Transition to OPTIGA_CMD_EXEC_COMMS_OPEN_START, cmd_sub_execution_state = %d\n", me->cmd_sub_execution_state);
+#endif
+#ifdef CHANGES
+                // Registrar el próximo evento manualmente aquí para forzar la re-llamada al handler
+                pal_os_event_register_callback_oneshot(
+                    me->p_optiga->p_pal_os_event_ctx,
+                    (register_callback) optiga_cmd_event_trigger_execute,
+                    me,
+                    OPTIGA_CMD_SCHEDULER_RUNNING_TIME_MS
+                );
+                *exit_loop = FALSE;
+#endif
                 break;
             }
             case OPTIGA_CMD_EXEC_COMMS_OPEN_START: {
@@ -1196,7 +1223,9 @@ _STATIC_H void optiga_cmd_execute_comms_open(optiga_cmd_t *me, uint8_t *exit_loo
                     me->manage_context_operation;
                 me->p_optiga->p_optiga_comms->p_pal_os_event_ctx = me->p_optiga->p_pal_os_event_ctx;
 #endif  // OPTIGA_COMMS_SHIELDED_CONNECTION
-
+#ifdef DEPURATION_BY_PRINTING
+                printf("optiga_cmd_execute_comms_open: Opening communication\n");
+#endif
                 (void)optiga_comms_set_callback_context(me->p_optiga->p_optiga_comms, me);
                 me->exit_status = optiga_comms_open(me->p_optiga->p_optiga_comms);
 #ifdef OPTIGA_SYNC_COMMS
@@ -1212,9 +1241,26 @@ _STATIC_H void optiga_cmd_execute_comms_open(optiga_cmd_t *me, uint8_t *exit_loo
                     break;
                 }
                 me->cmd_sub_execution_state = OPTIGA_CMD_EXEC_COMMS_OPEN_DONE;
+#ifdef DEPURATION_BY_PRINTING
+                printf("optiga_cmd_execute_comms_open: "
+                    "Transition to OPTIGA_CMD_EXEC_COMMS_OPEN_DONE, cmd_sub_execution_state = %d\n", me->cmd_sub_execution_state);
+#endif
+#ifdef CHANGES
+                // Registrar el próximo evento manualmente aquí para forzar la re-llamada al handler
+                pal_os_event_register_callback_oneshot(
+                    me->p_optiga->p_pal_os_event_ctx,
+                    (register_callback) optiga_cmd_event_trigger_execute,
+                    me,
+                    OPTIGA_CMD_SCHEDULER_RUNNING_TIME_MS
+                );
+                *exit_loop = FALSE;
+#endif
                 break;
             }
             case OPTIGA_CMD_EXEC_COMMS_OPEN_DONE: {
+#ifdef DEPURATION_BY_PRINTING
+                printf("optiga_cmd_execute_comms_open: Finalizing communication open\n");
+#endif
                 pal_os_event_register_callback_oneshot(
                     me->p_optiga->p_pal_os_event_ctx,
                     (register_callback)optiga_cmd_event_trigger_execute,
@@ -1340,6 +1386,9 @@ _STATIC_H void optiga_cmd_execute_prepare_command(optiga_cmd_t *me, uint8_t *exi
                 break;
             }
             case OPTIGA_CMD_EXEC_PREPARE_APDU: {
+#ifdef DEPURATION_BY_PRINTING
+                printf("optiga_cmd_execute_prepare_command: Preparing APDU\n");
+#endif
                 *exit_loop = TRUE;
                 me->exit_status = optiga_cmd_handler(me);
                 if (OPTIGA_LIB_SUCCESS != me->exit_status) {
@@ -1354,6 +1403,9 @@ _STATIC_H void optiga_cmd_execute_prepare_command(optiga_cmd_t *me, uint8_t *exi
                 me->p_optiga->protection_level_state |= me->protection_level;
 #endif  // OPTIGA_COMMS_SHIELDED_CONNECTION
                 (void)optiga_comms_set_callback_context(me->p_optiga->p_optiga_comms, me);
+#ifdef DEPURATION_BY_PRINTING
+                printf("optiga_cmd_execute_prepare_command: Transceiving data\n");
+#endif
                 me->exit_status = optiga_comms_transceive(
                     me->p_optiga->p_optiga_comms,
                     me->p_optiga->optiga_comms_buffer,
@@ -1478,14 +1530,23 @@ _STATIC_H void optiga_cmd_execute_process_response(optiga_cmd_t *me, uint8_t *ex
     do {
         switch (me->cmd_sub_execution_state) {
             case OPTIGA_CMD_EXEC_PROCESS_OPTIGA_RESPONSE: {
+#ifdef DEPURATION_BY_PRINTING
+                printf("optiga_cmd_execute_process_response: Processing OPTIGA response\n");
+#endif
                 optiga_cmd_execute_process_optiga_response(me, exit_loop);
                 break;
             }
             case OPTIGA_CMD_EXEC_GET_DEVICE_ERROR: {
+#ifdef DEPURATION_BY_PRINTING
+                printf("optiga_cmd_execute_process_response: Getting device error\n");
+#endif
                 optiga_cmd_execute_get_device_error(me, exit_loop);
                 break;
             }
             case OPTIGA_CMD_EXEC_RELEASE_SESSION: {
+#ifdef DEPURATION_BY_PRINTING
+                printf("optiga_cmd_execute_process_response: Releasing session\n");
+#endif
                 // lint --e{534} suppress "The return code is not checked because this is exit state."
                 optiga_cmd_release_session(me);
                 if (OPTIGA_LIB_SUCCESS == me->exit_status) {
@@ -1498,6 +1559,9 @@ _STATIC_H void optiga_cmd_execute_process_response(optiga_cmd_t *me, uint8_t *ex
                 break;
             }
             case OPTIGA_CMD_EXEC_RELEASE_LOCK: {
+#ifdef DEPURATION_BY_PRINTING
+                printf("optiga_cmd_execute_process_response: Releasing lock\n");
+#endif
                 // lint --e{534} suppress "The return code is not checked because this is exit state."
                 optiga_cmd_release_lock(me);
                 me->cmd_sub_execution_state = OPTIGA_CMD_STATE_EXIT;
@@ -1505,6 +1569,10 @@ _STATIC_H void optiga_cmd_execute_process_response(optiga_cmd_t *me, uint8_t *ex
                 break;
             }
             case OPTIGA_CMD_STATE_EXIT: {
+#ifdef DEPURATION_BY_PRINTING
+                printf("optiga_cmd_execute_process_response: Exiting state\n");
+                printf("Context: %p, Exit Status: %d\n", me->caller_context, me->exit_status);
+#endif
                 me->handler(me->caller_context, me->exit_status);
                 *exit_loop = TRUE;
                 break;
@@ -1531,6 +1599,11 @@ _STATIC_H void optiga_cmd_execute_handler(void *p_ctx, optiga_lib_status_t event
     uint8_t exit_loop = TRUE;
     optiga_cmd_t *me = (optiga_cmd_t *)p_ctx;
 
+#ifdef DEPURATION_BY_PRINTING
+    printf("optiga_cmd_execute_handler: Event recieved: %d, context = %p, actual state = %d, actual sub_state = %d\n",
+               event, p_ctx, me->cmd_next_execution_state, me->cmd_sub_execution_state);
+#endif
+
     // in event of no success, release lock and exit
     if (OPTIGA_LIB_SUCCESS != event) {
 #ifdef OPTIGA_COMMS_SHIELDED_CONNECTION
@@ -1543,22 +1616,37 @@ _STATIC_H void optiga_cmd_execute_handler(void *p_ctx, optiga_lib_status_t event
     do {
         switch (me->cmd_next_execution_state) {
             case OPTIGA_CMD_EXEC_COMMS_OPEN: {
+#ifdef DEPURATION_BY_PRINTING
+                printf("optiga_cmd_execute_handler: Executing COMMS_OPEN\n");
+#endif
                 optiga_cmd_execute_comms_open(me, &exit_loop);
                 break;
             }
             case OPTIGA_CMD_EXEC_COMMS_CLOSE: {
+#ifdef DEPURATION_BY_PRINTING
+                printf("optiga_cmd_execute_handler: Executing COMMS_CLOSE\n");
+#endif
                 optiga_cmd_execute_comms_close(me, &exit_loop);
                 break;
             }
             case OPTIGA_CMD_EXEC_PREPARE_COMMAND: {
+#ifdef DEPURATION_BY_PRINTING
+                printf("optiga_cmd_execute_handler: Executing PREPARE_COMMAND\n");
+#endif
                 optiga_cmd_execute_prepare_command(me, &exit_loop);
                 break;
             }
             case OPTIGA_CMD_EXEC_PROCESS_RESPONSE: {
+#ifdef DEPURATION_BY_PRINTING
+                printf("optiga_cmd_execute_handler: Executing PROCESS_RESPONSE\n");
+#endif
                 optiga_cmd_execute_process_response(me, &exit_loop);
                 break;
             }
             case OPTIGA_CMD_EXEC_ERROR_HANDLER: {
+#ifdef DEPURATION_BY_PRINTING
+                printf("optiga_cmd_execute_handler: Executing ERROR_HANDLER\n");
+#endif
                 optiga_cmd_execute_error_handler(me, &exit_loop);
                 break;
             }

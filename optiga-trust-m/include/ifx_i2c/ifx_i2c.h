@@ -23,6 +23,8 @@ extern "C" {
 #include "ifx_i2c_config.h"
 #include "optiga_lib_types.h"
 
+#define DEPURATION_BY_PRINTING
+
 /** @brief IFX I2C Reset types */
 typedef enum ifx_i2c_reset_type {
     /// Cold reset. Both reset pin and VDD pin are toggled low and then high
