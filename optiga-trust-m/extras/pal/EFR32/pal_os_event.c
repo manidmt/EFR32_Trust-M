@@ -13,6 +13,8 @@
  * @{
  */
 
+
+
 #include "pal_os_event.h"
 #include "FreeRTOS.h"
 #include "task.h"
@@ -50,8 +52,15 @@ pal_os_event_t *pal_os_event_create(register_callback callback, void *callback_a
 void pal_os_event_trigger_registered_callback(void) {
     register_callback callback;
 
+#ifdef CHANGES_&_PRINTING
+    printf("pal_os_event_trigger_registered_callback: Verificando, tiempo actual = %u, tiempo registrado = %u\n", xTaskGetTickCount(), pal_os_ts_0);
+#endif
+
     if ((pal_os_ts_0 != 0) && (pal_os_ts_0 < xTaskGetTickCount())
         && pal_os_event_0.callback_registered) {
+#ifdef CHANGES_&_PRINTING
+        printf("pal_os_event_trigger_registered_callback: Disparando callback registrado, contexto = %p\n", pal_os_event_0.callback_ctx);
+#endif
         pal_os_ts_0 = 0;
         callback = pal_os_event_0.callback_registered;
         callback((void *)pal_os_event_0.callback_ctx);
@@ -64,10 +73,19 @@ void pal_os_event_register_callback_oneshot(
     void *callback_args,
     uint32_t time_us
 ) {
+#ifdef CHANGES_&_PRINTING
+    printf("pal_os_event_register_callback_oneshot: Registrando callback, contexto = %p, tiempo = %u us\n", callback_args, time_us);
+#endif
     pal_os_event_0.callback_registered = callback;
     pal_os_event_0.callback_ctx = callback_args;
 
+
     pal_os_ts_0 = xTaskGetTickCount() + pdMS_TO_TICKS(time_us / 1000);
+#ifdef CHANGES_&_PRINTING
+    uint32_t ticks = pdMS_TO_TICKS(time_us / 1000);
+    pal_os_ts_0 = xTaskGetTickCount() + (ticks > 0 ? ticks : 1);
+    printf("pal_os_event_register_callback_oneshot: Tiempo del sistema actual = %lu, Tiempo registrado = %lu\n", xTaskGetTickCount(), pal_os_ts_0);
+#endif
 }
 
 /**

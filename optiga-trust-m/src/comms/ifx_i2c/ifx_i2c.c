@@ -261,6 +261,17 @@ _STATIC_H optiga_lib_status_t ifx_i2c_init(ifx_i2c_context_t *p_ifx_i2c_context)
 #ifdef  DEPURATION_BY_PRINTING
     printf("ifx_i2c_init: Iniciando inicialización de I2C, reset_type = %d, reset_state = %d\n", p_ifx_i2c_context->reset_type, p_ifx_i2c_context->reset_state);
 #endif
+#ifdef CHANGES
+    efr32_gpio_context_t reset_pin_hw = {
+        .port = gpioPortA,
+        .pin = 0
+    };
+    pal_gpio_t reset_pin = {
+        .p_gpio_hw = &reset_pin_hw
+    };
+    p_ifx_i2c_context->p_slave_reset_pin = &reset_pin;
+
+#endif
 
     if (((uint8_t)IFX_I2C_WARM_RESET == p_ifx_i2c_context->reset_type)
         || ((uint8_t)IFX_I2C_COLD_RESET == p_ifx_i2c_context->reset_type)) {
@@ -268,6 +279,27 @@ _STATIC_H optiga_lib_status_t ifx_i2c_init(ifx_i2c_context_t *p_ifx_i2c_context)
             case IFX_I2C_STATE_RESET_PIN_LOW: {
 #ifdef  DEPURATION_BY_PRINTING
                 printf("ifx_i2c_init: Estado IFX_I2C_STATE_RESET_PIN_LOW\n");
+
+                const pal_gpio_t *reset_pin = p_ifx_i2c_context->p_slave_reset_pin;
+
+                // Verificar si reset_pin y reset_pin->p_gpio_hw son válidos
+                if (reset_pin == NULL || reset_pin->p_gpio_hw == NULL) {
+                    printf("ifx_i2c_init: reset_pin o p_gpio_hw es NULL\n");
+                } else {
+                    printf("ifx_i2c_init: reset_pin = %p, reset_pin->p_gpio_hw = %p\n", reset_pin, reset_pin->p_gpio_hw);
+                    efr32_gpio_context_t *gpio_hw = (efr32_gpio_context_t *)(reset_pin->p_gpio_hw);
+                    printf("ifx_i2c_init: reset_pin contexto valido, Port = %d, Pin = %d\n", gpio_hw->port, gpio_hw->pin);
+                }
+
+                const pal_gpio_t *vdd_pin = p_ifx_i2c_context->p_slave_vdd_pin;
+
+                if (vdd_pin == NULL || vdd_pin->p_gpio_hw == NULL) {
+                    printf("ifx_i2c_init: vdd_pin o p_gpio_hw es NULL\n");
+                } else {
+                    printf("ifx_i2c_init: vdd_pin = %p, vdd_pin->p_gpio_hw = %p\n", vdd_pin, vdd_pin->p_gpio_hw);
+                    efr32_gpio_context_t *gpio_hw_vdd = (efr32_gpio_context_t *)(vdd_pin->p_gpio_hw);
+                    printf("ifx_i2c_init: vdd_pin contexto válido, Port = %d, Pin = %d\n", gpio_hw_vdd->port, gpio_hw_vdd->pin);
+                }
 #endif
                 // Setting the Vdd & Reset pin to low
                 if ((uint8_t)IFX_I2C_COLD_RESET == p_ifx_i2c_context->reset_type) {
@@ -322,6 +354,9 @@ _STATIC_H optiga_lib_status_t ifx_i2c_init(ifx_i2c_context_t *p_ifx_i2c_context)
                 break;
             }
             default:
+#ifdef  DEPURATION_BY_PRINTING
+                printf("ifx_i2c_init: Estado desconocido\n");
+#endif
                 break;
         }
     }

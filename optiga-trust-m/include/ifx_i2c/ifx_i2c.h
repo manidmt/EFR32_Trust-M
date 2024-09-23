@@ -24,6 +24,7 @@ extern "C" {
 #include "optiga_lib_types.h"
 
 #define DEPURATION_BY_PRINTING
+#define CHANGES
 
 /** @brief IFX I2C Reset types */
 typedef enum ifx_i2c_reset_type {

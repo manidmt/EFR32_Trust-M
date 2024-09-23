@@ -20,6 +20,8 @@
 extern "C" {
 #endif
 
+#define DEPURATION_BY_PRINTING
+
 #include "pal.h"
 #include "em_gpio.h"
 #include "em_cmu.h"

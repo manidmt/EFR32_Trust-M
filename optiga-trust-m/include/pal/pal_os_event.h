@@ -22,6 +22,8 @@ extern "C" {
 
 #include "optiga_lib_types.h"
 
+#define CHANGES_&_PRINTING
+
 /**
  * \brief typedef for Callback function when timer elapses.
  */

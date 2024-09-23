@@ -38,8 +38,7 @@ int main(void)
   // Initialize the application. For example, create periodic timer(s) or
   // task(s) if the kernel is present.
   app_init();
-//  pal_i2c_t *config;
-//  pal_i2c_init(config);
+
   printf("Before init\n");
   example_optiga_init();
   printf("After init\n");
